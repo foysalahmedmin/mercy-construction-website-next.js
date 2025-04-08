@@ -124,6 +124,11 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+.foreground {
+  --accent: var(--foreground);
+  --accent-foreground: var(--background);
+}
+
 .primary {
   --accent: var(--primary);
   --accent-foreground: var(--primary-foreground);
@@ -192,6 +197,19 @@
   .button:hover span {
     background-position: 100% 100%;
     background-size: 100% 1px;
+  }
+
+  /* gird self-align */
+  .self-space-3n:nth-child(3n + 1) {
+    @apply m-auto;
+  }
+
+  .self-space-3n:nth-child(3n + 2) {
+    @apply mx-auto;
+  }
+
+  .self-space-3n:nth-child(3n + 3) {
+    @apply ml-auto;
   }
 }
 

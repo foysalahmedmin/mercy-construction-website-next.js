@@ -27,9 +27,9 @@ const buttonVariants = cva(
         default:
           "primary bg-accent text-accent-foreground hover:bg-foreground hover:text-background",
         gradient:
-          "bg-gradient-to-r from-blue-500 to-purple-500 text-white border-transparent",
+          "bg-gradient-to-r from-primary to-secondary text-white border-transparent",
         outline:
-          "border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground",
+          "border hover:border-accent hover:text-accent hover:bg-transparent bg-accent text-accent-foreground",
         ghost:
           "bg-transparent text-accent hover:bg-accent/10 hover:text-accent-foreground",
         link: "text-blue-500 hover:text-blue-700 underline",
@@ -44,7 +44,7 @@ const buttonVariants = cva(
       },
       shape: {
         default: "rounded-md",
-        icon: "rounded-full",
+        icon: "rounded-md aspect-square px-0",
         none: "",
       },
       loading: {
