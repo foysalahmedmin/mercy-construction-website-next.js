@@ -299,9 +299,9 @@ const CarouselPreviousTrigger = forwardRef<HTMLButtonElement, TriggerProps>(
           <path
             fill="none"
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="0.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="0.5"
             d="m6 8l-4 4l4 4m-4-4h20"
           />
         </svg>
@@ -350,9 +350,9 @@ const CarouselNextTrigger = forwardRef<HTMLButtonElement, TriggerProps>(
           <path
             fill="none"
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="0.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="0.5"
             d="m18 8l4 4l-4 4M2 12h20"
           />
         </svg>

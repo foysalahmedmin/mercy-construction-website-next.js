@@ -47,7 +47,7 @@ const LeadershipsSection = () => {
                           <h3 className="text-3xl">
                             <Link
                               href={"/leaderships/" + leader?._id}
-                              className="primary hover:text-primary underline-effect inline-block"
+                              className="primary hover:text-primary underline-effect"
                             >
                               {leader?.name}
                             </Link>

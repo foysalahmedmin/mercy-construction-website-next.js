@@ -78,13 +78,7 @@ type DescriptionProps = ComponentPropsWithoutRef<"p">;
 
 const Description = forwardRef<ComponentRef<"p">, DescriptionProps>(
   ({ className, ...props }, ref) => {
-    return (
-      <p
-        className={cn("mt-4 text-sm font-semibold", className)}
-        ref={ref}
-        {...props}
-      />
-    );
+    return <p className={cn("mt-4", className)} ref={ref} {...props} />;
   },
 );
 Description.displayName = "Description";
