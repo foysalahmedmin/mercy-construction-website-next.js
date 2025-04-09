@@ -6,11 +6,13 @@ import useScrollPosition from "@/hooks/ui/useScrollPosition";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const Header = ({ className }: { className?: string }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollTop, scrollDirection } = useScrollPosition();
+  const pathname = usePathname();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -47,11 +49,16 @@ const Header = ({ className }: { className?: string }) => {
     <>
       <header
         className={cn(
-          "text-foreground dark fixed top-0 right-0 left-0 z-50 h-20 bg-transparent shadow-transparent backdrop-blur-xs transition-all duration-300 ease-in-out",
+          "text-foreground dark top-0 right-0 left-0 z-50 h-20 bg-transparent backdrop-blur-xs transition-all duration-300 ease-in-out",
           {
-            "bg-background/95 shadow-sm": scrollTop > 80,
-            "-translate-y-full": scrollDirection === "down" && scrollTop > 80,
-            "translate-y-0": scrollDirection === "up" || scrollTop <= 80,
+            fixed: pathname === "/",
+            "bg-card sticky": pathname !== "/",
+            "bg-background/95 shadow-sm": scrollTop > 80 && pathname === "/",
+            "-translate-y-full":
+              scrollDirection === "down" && scrollTop > 80 && pathname === "/",
+            "translate-y-0":
+              (scrollDirection === "up" && pathname === "/") ||
+              (scrollTop <= 80 && pathname === "/"),
           },
           className,
         )}
@@ -83,9 +90,11 @@ const Header = ({ className }: { className?: string }) => {
             ))}
           </nav>
           <div className="flex items-center gap-4">
-            <Button className="hover:bg-background hover:text-foreground">
-              <span>GET AN ESTIMATE</span>
-            </Button>
+            <Link href={"#"}>
+              <Button asChild={true}>
+                <span>GET AN ESTIMATE</span>
+              </Button>
+            </Link>
             {/* Mobile Menu Button */}
             <button
               className="flex flex-col space-y-1.5 focus:outline-none lg:hidden"

@@ -2,22 +2,27 @@
 
 import useRippleEffect from "@/hooks/ui/useRippleEffect";
 import { cn } from "@/lib/utils";
-import { cva, VariantProps } from "class-variance-authority";
-import { forwardRef, RefObject, useImperativeHandle, useRef } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  ElementType,
+  forwardRef,
+  RefObject,
+  useImperativeHandle,
+  useRef,
+} from "react";
 
-type ButtonVariants = VariantProps<typeof buttonVariants>;
+type SupportedElements = "button" | "input" | "textarea" | "select";
 
-interface ButtonProps extends ButtonVariants {
-  className?: string;
-  loadingClassName?: string;
-  loading?: "center" | "left" | "right";
-  as?: "button" | "a" | "span";
+type ButtonProps<T extends ElementType = SupportedElements> = {
+  as?: T | React.ElementType;
   asChild?: boolean;
-  disabled?: boolean;
   isLoading?: boolean;
-  animation?: boolean;
-  [key: string]: any;
-}
+  isAnimation?: boolean;
+  loadingClassName?: string;
+} & ComponentPropsWithoutRef<T> &
+  VariantProps<typeof buttonVariants>;
 
 const buttonVariants = cva(
   "button animate-pop relative inline-flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-none border border-transparent text-base leading-tight whitespace-nowrap transition-all duration-300 ease-in-out active:scale-95 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
@@ -25,7 +30,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "primary bg-accent text-accent-foreground hover:bg-foreground hover:text-background",
+          "bg-accent text-accent-foreground hover:bg-foreground hover:text-background",
         gradient:
           "bg-gradient-to-r from-primary to-secondary text-white border-transparent",
         outline:
@@ -63,10 +68,13 @@ const buttonVariants = cva(
   },
 );
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<
+  ElementRef<SupportedElements>,
+  ButtonProps<SupportedElements>
+>(
   (
     {
-      className,
+      className = "primary",
       loadingClassName,
       variant,
       size,
@@ -76,15 +84,18 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       asChild = false,
       disabled = false,
       isLoading = false,
-      animation = false,
+      isAnimation = false,
       ...props
     },
     ref,
   ) => {
     const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-    useImperativeHandle(ref, () => buttonRef.current as HTMLButtonElement);
-    useRippleEffect(buttonRef as RefObject<HTMLElement>, !animation);
+    useImperativeHandle(
+      ref,
+      () => buttonRef.current as ElementRef<SupportedElements>,
+    );
+    useRippleEffect(buttonRef as RefObject<HTMLElement>, !isAnimation);
 
     const Comp = asChild ? "span" : as;
     return (

@@ -9,6 +9,16 @@ import {
   type ElementRef,
 } from "react";
 
+type SupportedElements = "input" | "textarea" | "select";
+
+type FormControlProps<T extends ElementType = SupportedElements> = {
+  as?: T | React.ElementType;
+  asChild?: boolean;
+  isLoading?: boolean;
+  loadingClassName?: string;
+} & ComponentPropsWithoutRef<T> &
+  VariantProps<typeof formControlVariants>;
+
 const formControlVariants = cva(
   "flex w-full rounded-md file:border-0 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
   {
@@ -44,16 +54,6 @@ const formControlVariants = cva(
     },
   },
 );
-
-type SupportedElements = "input" | "textarea" | "select";
-
-type FormControlProps<T extends ElementType = SupportedElements> = {
-  as?: T | React.ElementType;
-  asChild?: boolean;
-  isLoading?: boolean;
-  loadingClassName?: string;
-} & ComponentPropsWithoutRef<T> &
-  VariantProps<typeof formControlVariants>;
 
 const FormControl = forwardRef<
   ElementRef<SupportedElements>,

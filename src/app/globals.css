@@ -72,15 +72,6 @@
   --sidebar-ring: oklch(0.645 0.246 16.439);
 }
 
-.accent {
-  --accent: var(--foreground);
-  --accent-foreground: var(--accent-foreground);
-  --primary: var(--accent);
-  --primary-foreground: var(--accent-foreground);
-  --secondary: var(--accent);
-  --secondary-foreground: var(--accent-foreground);
-}
-
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -122,6 +113,15 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+}
+
+.accent {
+  --accent: var(--foreground);
+  --accent-foreground: var(--accent-foreground);
+  --primary: var(--accent);
+  --primary-foreground: var(--accent-foreground);
+  --secondary: var(--accent);
+  --secondary-foreground: var(--accent-foreground);
 }
 
 .foreground {
