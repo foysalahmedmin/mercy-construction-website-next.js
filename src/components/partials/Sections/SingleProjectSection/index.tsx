@@ -12,7 +12,7 @@ import Link from "next/link";
 type SingleProjectSectionProps = {
   title?: string;
   subtitle?: string;
-  description?: string;
+  description?: string | React.ReactNode;
   className?: string;
   project?: Project;
 };

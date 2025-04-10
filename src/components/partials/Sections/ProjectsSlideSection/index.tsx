@@ -1,4 +1,4 @@
-import { projects as projects_data } from "@/assets/data/projects";
+import { Project, projects as projects_data } from "@/assets/data/projects";
 import {
   Carousel,
   CarouselContent,
@@ -17,13 +17,21 @@ import { cn } from "@/lib/utils";
 import { Plus } from "lucide-react";
 import Link from "next/link";
 
+type ProjectsSlideSectionProps = {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  projects?: Project[];
+  className?: string;
+};
+
 const ProjectsSlideSection = ({
   title = "",
   subtitle = "",
   description = "",
   projects = projects_data,
   className = "",
-}) => {
+} : ProjectsSlideSectionProps) => {
   return (
     <section className={cn("py-16 md:py-24", className)}>
       <div className="container">

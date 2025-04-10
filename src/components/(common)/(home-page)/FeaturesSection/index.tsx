@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 const FeaturesSection = () => {
   return (
-    <section id="about" className="bg-muted py-16 md:py-24">
+    <section id="features" className="bg-muted py-16 md:py-24">
       <div className="container">
         <div className="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-4">
           <div>

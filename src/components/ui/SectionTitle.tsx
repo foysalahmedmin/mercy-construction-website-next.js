@@ -76,9 +76,9 @@ Subtitle.displayName = "Subtitle";
 // ---------- Description ----------
 type DescriptionProps = ComponentPropsWithoutRef<"p">;
 
-const Description = forwardRef<ComponentRef<"p">, DescriptionProps>(
+const Description = forwardRef<ComponentRef<"div">, DescriptionProps>(
   ({ className, ...props }, ref) => {
-    return <p className={cn("mt-4", className)} ref={ref} {...props} />;
+    return <div className={cn("mt-4", className)} ref={ref} {...props} />;
   },
 );
 Description.displayName = "Description";

@@ -12,11 +12,11 @@ import { useState } from "react";
 
 const navLinks = [
   { href: "/#home", name: "Home" },
-  { href: "/#about", name: "About" },
   {
     href: "/#services",
     name: "Services",
   },
+  { href: "/#features", name: "Features" },
   {
     href: "/#projects",
     name: "Projects",
@@ -31,7 +31,7 @@ const Header = ({ className }: { className?: string }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollTop, scrollDirection } = useScrollPosition();
   const { visibleSection } = useVisibleSection(
-    ["home", "about", "services", "projects"],
+    ["home", "services", "features", "projects"],
     0.5,
   );
   console.log(visibleSection);
@@ -87,7 +87,6 @@ const Header = ({ className }: { className?: string }) => {
             {navLinks?.map((link, index) => {
               const url = new URL(link?.href, "http://a");
               const isHashed = !!url.hash;
-              console.log();
               return (
                 <span key={index}>
                   {isHashed ? (
@@ -97,7 +96,7 @@ const Header = ({ className }: { className?: string }) => {
                       className={cn(
                         "underline-effect primary text-sm whitespace-nowrap uppercase",
                         {
-                          active: visibleSection === url.hash,
+                          active: visibleSection === url.hash.replace("#", ""),
                         },
                       )}
                     >
@@ -161,10 +160,11 @@ const Header = ({ className }: { className?: string }) => {
         )}
       >
         <nav className="flex flex-col items-center gap-4">
-          {navLinks?.map((link) => {
-            const isHashed = link?.href.includes("#");
+          {navLinks?.map((link, index) => {
+            const url = new URL(link?.href, "http://a");
+            const isHashed = !!url.hash;
             return (
-              <>
+              <span key={index}>
                 {isHashed ? (
                   <Link
                     key={link.name}
@@ -172,7 +172,7 @@ const Header = ({ className }: { className?: string }) => {
                     className={cn(
                       "underline-effect primary text-sm whitespace-nowrap uppercase",
                       {
-                        active: pathname === link.href.replace("#", ""),
+                        active: visibleSection === url.hash.replace("#", ""),
                       },
                     )}
                   >
@@ -188,7 +188,7 @@ const Header = ({ className }: { className?: string }) => {
                     {link?.name}
                   </ActiveLink>
                 )}
-              </>
+              </span>
             );
           })}
         </nav>

@@ -15,9 +15,7 @@ export const useVisibleSection = (ids?: string[], threshold = 0.5) => {
 
     ids.forEach((sectionId) => {
       const element = document.getElementById(sectionId);
-      console.log(element);
       if (!element) return;
-
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
