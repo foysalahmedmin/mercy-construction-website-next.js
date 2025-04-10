@@ -49,9 +49,9 @@ const Header = ({ className }: { className?: string }) => {
     <>
       <header
         className={cn(
-          "text-foreground dark top-0 right-0 left-0 z-50 h-20 bg-transparent backdrop-blur-xs transition-all duration-300 ease-in-out",
+          "text-foreground top-0 right-0 left-0 z-50 h-20 bg-transparent backdrop-blur-xs transition-all duration-300 ease-in-out",
           {
-            fixed: pathname === "/",
+            "dark fixed": pathname === "/",
             "bg-card sticky": pathname !== "/",
             "bg-background/95 shadow-sm": scrollTop > 80 && pathname === "/",
             "-translate-y-full":
