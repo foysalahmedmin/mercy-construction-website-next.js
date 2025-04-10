@@ -12,6 +12,19 @@ interface Leadership {
 
 export const leaderships: Leadership[] = [
   {
+    _id: "abul-kalam",
+    name: "Abul Kalam",
+    excerpt: "“We favorably impact people, families and",
+    designation: "Founding Chairman",
+    short_description:
+      "Abul Kalam is the visionary founder of Mercy Construction, whose relentless dedication and hard work built the foundation of the company. His focus on quality, integrity, and trust continues to shape the company's values today.",
+    description:
+      "Abul Kalam embarked on his journey in the construction industry in New York in 1991 with a clear vision to create enduring structures and contribute meaningfully to the built environment. From humble beginnings, he worked diligently to establish himself as a leading figure in the field, gaining the trust and respect of clients, collaborators, and the wider community. His work was characterized by an unwavering dedication to quality, meticulous attention to detail, and a commitment to exceeding expectations.\n\nThroughout his career, Abul Kalam demonstrated an exceptional ability to blend technical expertise with a personal touch, ensuring that every project he undertook reflected his core values of integrity, trust, and excellence. He believed that construction was not merely about erecting buildings but about creating spaces that serve people and stand as a testament to reliability and craftsmanship. \n\nWhile Abul Kalam did not formally establish Mercy Construction Inc., his pioneering efforts and the values he championed laid a solid foundation for its creation. His work ethic, vision, and determination inspired a generation of professionals, including his son, to continue his legacy. Today, Mercy Construction proudly upholds the principles he espoused, ensuring that his spirit remains deeply embedded in the company’s mission and operations. Abul Kalam’s contributions to the industry and his community continue to be celebrated, making him a true pioneer whose impact transcends time.",
+    image: "/images/leaderships/1.png",
+    link: "/leaderships/abul-kalam/",
+    linkedin: null,
+  },
+  {
     _id: "mijanur-rahman",
     name: "Mijanur Rahman",
     excerpt: "“We favorably impact people, families and",
@@ -20,21 +33,8 @@ export const leaderships: Leadership[] = [
       "Mijanur Rahman, the President and CEO, has taken Mercy Construction to new heights with his innovative leadership. By embracing modern practices and fostering a collaborative culture, he ensures the company thrives in an ever-evolving industry.",
     description:
       "Mijanur Rahman joined Mercy Construction in 2010 and quickly rose through the ranks with his exceptional leadership skills and strategic vision. As President and CEO, he has implemented cutting-edge construction technologies while maintaining the company's core values of quality and integrity. Under his guidance, Mercy Construction has expanded into new markets and consistently delivered projects that exceed client expectations.",
-    image: "/images/leaderships/1.png",
-    link: "/leaderships/mijanur-rahman/",
-    linkedin: null,
-  },
-  {
-    _id: "abul-kalam",
-    name: "Abul Kalam",
-    excerpt: "“We favorably impact people, families and",
-    designation: "Founding Chairman",
-    short_description:
-      "Abul Kalam is the visionary founder of Mercy Construction, whose relentless dedication and hard work built the foundation of the company. His focus on quality, integrity, and trust continues to shape the company's values today.",
-    description:
-      "Abul Kalam founded Mercy Construction in 1985 with a small team and a big dream. Over three decades, he grew the company into one of the most respected construction firms in the region. His hands-on approach and attention to detail set the standard for quality that remains the company's hallmark. Even after stepping back from day-to-day operations, his philosophy of 'building relationships as strong as our structures' continues to guide the company.",
     image: "/images/leaderships/2.png",
-    link: "/leaderships/abul-kalam/",
+    link: "/leaderships/mijanur-rahman/",
     linkedin: null,
   },
   {
