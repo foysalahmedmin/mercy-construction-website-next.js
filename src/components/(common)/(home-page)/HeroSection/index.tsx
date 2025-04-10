@@ -3,7 +3,10 @@ import IframeVideScreen from "@/components/ui/IframeVideoScreen";
 
 const HeroSection = () => {
   return (
-    <section className="dark text-foreground bg-background/25 relative flex min-h-screen items-center py-24">
+    <section
+      id="home"
+      className="dark text-foreground bg-background/25 relative flex min-h-screen items-center py-24"
+    >
       <IframeVideScreen className="absolute inset-0 -z-10" />
       <div className="container">
         <div className="max-w-2xl space-y-6 lg:space-y-8">

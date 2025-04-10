@@ -1,3 +1,4 @@
+import { Project } from "@/assets/data/projects";
 import {
   Description,
   SectionTitle,
@@ -7,6 +8,14 @@ import {
 import { cn } from "@/lib/utils";
 import { Plus } from "lucide-react";
 import Link from "next/link";
+
+type SingleProjectSectionProps = {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  className?: string;
+  project?: Project;
+};
 
 const SingleProjectSection = ({
   title = "",
@@ -24,17 +33,21 @@ const SingleProjectSection = ({
     location: "",
     link: "/projects/station-home/",
   },
-}) => {
+}: SingleProjectSectionProps) => {
   return (
     <section className={cn("py-16 md:py-24", className)}>
       <div className="container">
-        <SectionTitle>
-          {subtitle && <Subtitle>{subtitle}</Subtitle>}
-          {title && <Title>{title}</Title>}
-          {description && (
-            <Description className="text-3xl">{description}</Description>
-          )}
-        </SectionTitle>
+        {(title || subtitle || description) && (
+          <SectionTitle>
+            {subtitle && <Subtitle>{subtitle}</Subtitle>}
+            {title && <Title>{title}</Title>}
+            {description && (
+              <Description className="text-xl md:text-3xl">
+                {description}
+              </Description>
+            )}
+          </SectionTitle>
+        )}
         <div className="group/card grid items-center gap-6">
           <Link
             href={"/projects/" + project?._id}

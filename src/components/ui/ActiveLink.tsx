@@ -14,7 +14,13 @@ interface ActiveLinkProps {
 }
 
 const trimPath = (path = ""): string => {
-  return path?.replace(/^\/|\/$/g, "");
+  try {
+    const url = new URL(path, "http://a");
+    const trimmed = url.pathname.replace(/^\/|\/$/g, "");
+    return trimmed;
+  } catch {
+    return "";
+  }
 };
 
 const checkActivePath = ({

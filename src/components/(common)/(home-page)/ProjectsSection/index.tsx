@@ -13,7 +13,7 @@ import Link from "next/link";
 
 const ProjectsSection = () => {
   return (
-    <section className="py-16 md:py-24">
+    <section id="projects" className="py-16 md:py-24">
       <div className="container">
         <div className="mb-6 sm:px-4 md:px-6 lg:ml-24">
           <SectionTitle className="max-w-3xl">

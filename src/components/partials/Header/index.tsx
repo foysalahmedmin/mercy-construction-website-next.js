@@ -3,15 +3,38 @@
 import { ActiveLink } from "@/components/ui/ActiveLink";
 import { Button } from "@/components/ui/Button";
 import useScrollPosition from "@/hooks/ui/useScrollPosition";
+import { useVisibleSection } from "@/hooks/utils/useVisibleSection";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
+const navLinks = [
+  { href: "/#home", name: "Home" },
+  { href: "/#about", name: "About" },
+  {
+    href: "/#services",
+    name: "Services",
+  },
+  {
+    href: "/#projects",
+    name: "Projects",
+  },
+  {
+    href: "/blogs",
+    name: "Blogs",
+  },
+];
+
 const Header = ({ className }: { className?: string }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollTop, scrollDirection } = useScrollPosition();
+  const { visibleSection } = useVisibleSection(
+    ["home", "about", "services", "projects"],
+    0.5,
+  );
+  console.log(visibleSection);
   const pathname = usePathname();
 
   const toggleMobileMenu = () => {
@@ -27,23 +50,6 @@ const Header = ({ className }: { className?: string }) => {
     setIsMobileMenuOpen(false);
     document.body.style.overflow = "auto";
   };
-
-  const navLinks = [
-    { href: "/home", name: "Home" },
-    { href: "/about", name: "About" },
-    {
-      href: "/services",
-      name: "Services",
-    },
-    {
-      href: "/works",
-      name: "Works",
-    },
-    {
-      href: "/blogs",
-      name: "Blogs",
-    },
-  ];
 
   return (
     <>
@@ -78,16 +84,38 @@ const Header = ({ className }: { className?: string }) => {
             />
           </Link>
           <nav className="hidden flex-1 items-center justify-center gap-4 px-0 lg:flex lg:gap-6 lg:px-16">
-            {navLinks?.map((link) => (
-              <ActiveLink
-                key={link.name}
-                href={link.href}
-                className="underline-effect primary text-sm whitespace-nowrap uppercase"
-                activeClassName="active"
-              >
-                {link?.name}
-              </ActiveLink>
-            ))}
+            {navLinks?.map((link, index) => {
+              const url = new URL(link?.href, "http://a");
+              const isHashed = !!url.hash;
+              console.log();
+              return (
+                <span key={index}>
+                  {isHashed ? (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      className={cn(
+                        "underline-effect primary text-sm whitespace-nowrap uppercase",
+                        {
+                          active: visibleSection === url.hash,
+                        },
+                      )}
+                    >
+                      {link?.name}
+                    </Link>
+                  ) : (
+                    <ActiveLink
+                      key={link.name}
+                      href={link.href}
+                      className="underline-effect primary text-sm whitespace-nowrap uppercase"
+                      activeClassName="active"
+                    >
+                      {link?.name}
+                    </ActiveLink>
+                  )}
+                </span>
+              );
+            })}
           </nav>
           <div className="flex items-center gap-4">
             <Link href={"#"}>
@@ -133,17 +161,36 @@ const Header = ({ className }: { className?: string }) => {
         )}
       >
         <nav className="flex flex-col items-center gap-4">
-          {navLinks.map((link) => (
-            <ActiveLink
-              key={link.name}
-              href={link.href}
-              className="underline-effect whitespace-nowrap"
-              activeClassName="active"
-              onClick={closeMobileMenu}
-            >
-              {link.name}
-            </ActiveLink>
-          ))}
+          {navLinks?.map((link) => {
+            const isHashed = link?.href.includes("#");
+            return (
+              <>
+                {isHashed ? (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={cn(
+                      "underline-effect primary text-sm whitespace-nowrap uppercase",
+                      {
+                        active: pathname === link.href.replace("#", ""),
+                      },
+                    )}
+                  >
+                    {link?.name}
+                  </Link>
+                ) : (
+                  <ActiveLink
+                    key={link.name}
+                    href={link.href}
+                    className="underline-effect primary text-sm whitespace-nowrap uppercase"
+                    activeClassName="active"
+                  >
+                    {link?.name}
+                  </ActiveLink>
+                )}
+              </>
+            );
+          })}
         </nav>
       </div>
     </>

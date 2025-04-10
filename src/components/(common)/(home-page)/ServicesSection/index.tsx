@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const ServicesSection = () => {
   return (
-    <section className="py-16 md:py-24">
+    <section id="services" className="py-16 md:py-24">
       <div className="container">
         <SectionTitle>
           <Subtitle>Our services</Subtitle>
