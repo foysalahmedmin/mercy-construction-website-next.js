@@ -1,4 +1,16 @@
-export const projects = [
+export type Project = {
+  _id: string;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  client: string;
+  sector: string;
+  location: string;
+  link: string;
+};
+
+export const projects: Project[] = [
   {
     _id: "one-thousand-museum",
     title: "One Thousand Museum",
@@ -58,11 +70,133 @@ export const projects = [
     _id: "park-offices",
     title: "Park Offices",
     description: "",
-    image: "/images/projects/1.png",
+    image: "/images/projects/6.png",
     tags: ["buildings", "residential"],
     client: "",
     sector: "Projects",
     location: "",
     link: "/projects/park-offices/",
+  },
+  {
+    _id: "kitchen-renovation",
+    title: "Kitchen Renovation",
+    description: "",
+    image: "/images/projects/7.png",
+    tags: ["renovation"],
+    client: "",
+    sector: "Projects Small Renovation Company",
+    location: "",
+    link: "/projects/kitchen-renovation/",
+  },
+  {
+    _id: "astor-place-boutique-condo",
+    title: "Astor Place Boutique Condo",
+    description: "",
+    image: "/images/projects/8.png",
+    tags: ["heavy-industrial", "renovation"],
+    client: "",
+    sector: "Projects Small Renovation Company",
+    location: "",
+    link: "/projects/astor-place-boutique-condo/",
+  },
+  {
+    _id: "floor-and-railing-repairs",
+    title: "Floor and Railing Repairs",
+    description: "",
+    image: "/images/projects/9.png",
+    tags: ["renovation"],
+    client: "",
+    sector: "Projects Small Renovation Company",
+    location: "",
+    link: "/projects/floor-and-railing-repairs/",
+  },
+  {
+    _id: "small-bathroom-tiling",
+    title: "Small Bathroom Tiling",
+    description: "",
+    image: "/images/projects/10.png",
+    tags: ["renovation"],
+    client: "",
+    sector: "Projects Small Renovation Company",
+    location: "",
+    link: "/projects/small-bathroom-tiling/",
+  },
+  {
+    _id: "roof-restoration-coventry",
+    title: "Roof Restoration Coventry",
+    description: "",
+    image: "/images/projects/11.png",
+    tags: ["heavy-industrial", "renovation"],
+    client: "",
+    sector: "Projects Small Renovation Company",
+    location: "",
+    link: "/projects/roof-restoration-coventry/",
+  },
+  {
+    _id: "john-mayer-kitchen-renovation",
+    title: "John Mayer Kitchen Renovation",
+    description: "",
+    image: "/images/projects/12.png",
+    tags: ["renovation"],
+    client: "",
+    sector: "Projects Small Renovation Company",
+    location: "",
+    link: "/projects/john-mayer-kitchen-renovation/",
+  },
+
+  {
+    _id: "one-south-first-with-long-title-here-and-here",
+    title: "One South First with long title here and here",
+    description: "",
+    image: "/images/projects/13.png",
+    tags: ["buildings", "hospitality", "residential"],
+    client: "",
+    sector: "Projects",
+    location: "",
+    link: "/projects/one-south-first-with-long-title-here-and-here/",
+  },
+  {
+    _id: "betances-residence",
+    title: "Betances Residence",
+    description: "",
+    image: "/images/projects/14.png",
+    tags: ["buildings", "residential"],
+    client: "",
+    sector: "Projects",
+    location: "",
+    link: "/projects/betances-residence/",
+  },
+  {
+    _id: "betances-residence-2",
+    title: "Betances Residence",
+    description: "",
+    image: "/images/projects/15.png",
+    tags: ["buildings", "residential"],
+    client: "",
+    sector: "Projects",
+    location: "",
+    link: "/projects/betances-residence-2/",
+  },
+  {
+    _id: "minimal-home",
+    title: "Minimal home",
+    description: "",
+    image: "/images/projects/16.png",
+    tags: ["residential"],
+    client: "",
+    sector: "Projects",
+    location: "",
+    link: "/projects/minimal-home/",
+  },
+  {
+    _id: "residential-in-soho",
+    title: "Residential in SoHo",
+    description: "",
+    image: "/images/projects/17.png",
+    tags: ["residential"],
+    client: "",
+    sector: "Projects",
+    location: "",
+    link: "/projects/residential-in-soho/",
   },
 ];
