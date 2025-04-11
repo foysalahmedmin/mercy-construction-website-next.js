@@ -1,3 +1,4 @@
+import FollowUpSection from "@/components/partials/Sections/FollowUpSection";
 import PageHeaderSection from "@/components/partials/Sections/PageHeaderSection";
 import { Button } from "@/components/ui/Button";
 import { Checkbox } from "@/components/ui/Checkbox";
@@ -305,6 +306,7 @@ possible."
           </div>
         </div>
       </section>
+      <FollowUpSection />
     </main>
   );
 };

@@ -1,4 +1,5 @@
 import { blogs } from "@/assets/data/blogs";
+import FollowUpSection from "@/components/partials/Sections/FollowUpSection";
 import PageHeaderSection from "@/components/partials/Sections/PageHeaderSection";
 import Link from "next/link";
 
@@ -93,6 +94,7 @@ const BlogsPage = () => {
           </div>
         </div>
       </section>
+      <FollowUpSection />
     </main>
   );
 };
