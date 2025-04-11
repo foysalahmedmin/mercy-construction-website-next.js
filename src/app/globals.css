@@ -113,10 +113,24 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* animation */
+  --animate-checkbox: checkbox 0.3s ease-in-out;
+  @keyframes checkbox {
+    0% {
+      background-position-y: 0.25em;
+    }
+    50% {
+      background-position-y: -0.1em;
+    }
+    100% {
+      background-position-y: 0;
+    }
+  }
 }
 
 .accent {
-  --accent: var(--foreground);
+  --accent: var(--accent);
   --accent-foreground: var(--accent-foreground);
   --primary: var(--accent);
   --primary-foreground: var(--accent-foreground);
@@ -155,6 +169,25 @@
 }
 
 @layer components {
+  /* checkbox */
+  .checkbox:checked {
+    background-image:
+      linear-gradient(-45deg, transparent 65%, var(--accent) 65.99%),
+      linear-gradient(45deg, transparent 75%, var(--accent) 75.99%),
+      linear-gradient(-45deg, var(--accent) 40%, transparent 40.99%),
+      linear-gradient(
+        45deg,
+        var(--accent) 30%,
+        var(--accent-foreground) 30.99%,
+        var(--accent-foreground) 40%,
+        transparent 40.99%
+      ),
+      linear-gradient(
+        -45deg,
+        var(--accent-foreground) 50%,
+        var(--accent) 50.99%
+      );
+  }
 }
 
 @layer utilities {

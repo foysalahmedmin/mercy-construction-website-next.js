@@ -44,17 +44,11 @@ const FAQSection = () => {
               <form className="space-y-4" action="">
                 <label className="block w-full space-y-2">
                   <span className="inline-block">Your name</span>
-                  <FormControl
-                    className="primary"
-                    as="input"
-                    placeholder="You name"
-                    type="text"
-                  />
+                  <FormControl as="input" placeholder="You name" type="text" />
                 </label>
                 <label className="block w-full space-y-2">
                   <span className="inline-block">Email address</span>
                   <FormControl
-                    className="primary"
                     as="input"
                     placeholder="Email address"
                     type="email"
@@ -63,17 +57,17 @@ const FAQSection = () => {
                 <label className="block w-full space-y-2">
                   <span className="inline-block">Phone number</span>
                   <FormControl
-                    className="primary"
                     as="input"
                     placeholder="Phone number"
                     type="tel"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                   />
                 </label>
                 <label className="block w-full space-y-2">
                   <span className="inline-block">
                     What are you looking for?
                   </span>
-                  <FormControl className="primary" as="select" type="tel">
+                  <FormControl as="select" size="lg">
                     <option value="">Select</option>
                     <option value="Home Renovation">Home Renovation</option>
                     <option value="Interior Painting Services">

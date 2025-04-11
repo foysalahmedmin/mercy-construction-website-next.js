@@ -5,7 +5,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="dark text-foreground bg-background/25 relative flex min-h-screen items-center py-24"
+      className="dark text-foreground bg-background/25 relative flex min-h-[80vh] items-center py-24"
     >
       <IframeVideScreen className="absolute inset-0 -z-10" />
       <div className="container">

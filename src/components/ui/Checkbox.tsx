@@ -9,37 +9,35 @@ import {
   type ElementRef,
 } from "react";
 
-type SupportedElements = "input" | "textarea" | "select";
+type SupportedElements = "input";
 
-type FormControlProps<T extends ElementType = SupportedElements> = {
+type CheckboxProps<T extends ElementType = SupportedElements> = {
   as?: T | React.ElementType;
   asChild?: boolean;
   isLoading?: boolean;
   loadingClassName?: string;
+  type?: string;
 } & ComponentPropsWithoutRef<T> &
-  VariantProps<typeof formControlVariants>;
+  VariantProps<typeof checkboxVariants>;
 
-const formControlVariants = cva(
-  "flex w-full rounded-md file:border-0 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+const checkboxVariants = cva(
+  "checkbox inline-block shrink-0 appearance-none animate-pop transition-all duration-300 ease-in-out cursor-pointer rounded w-[1em] h-[1em] text-[1.25rem] checked:animate-checkbox checked:border-accent disabled:opacity-50 disabled:animate-none disabled:cursor-not-allowed disabled:pointer-events-none",
   {
     variants: {
       variant: {
         default:
-          "border border-input bg-card transition-colors file:bg-transparent file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent",
-        gradient:
-          "bg-gradient-to-r from-primary to-secondary text-white border-0",
-        outline:
-          "border border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-500",
-        ghost:
-          "bg-transparent border border-transparent focus:border-gray-300 focus:ring-0",
-        link: "border-0 bg-transparent underline text-blue-600 hover:text-blue-800 focus:outline-none",
+          "border border-current bg-transparent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent",
+        gradient: "",
+        outline: "",
+        ghost: "",
+        link: "",
         none: "",
       },
       size: {
-        default: "h-10 px-4 text-sm file:text-sm",
-        sm: "h-8 px-3 text-xs file:text-xs",
-        md: "h-10 px-4 text-sm file:text-sm",
-        lg: "h-12 px-6 text-base file:text-base",
+        default: "text-[1.5rem]",
+        sm: "text-[1.25rem]",
+        md: "text-[1.5rem]",
+        lg: "text-[1.75rem]",
         none: "",
       },
       loading: {
@@ -50,14 +48,14 @@ const formControlVariants = cva(
     },
     defaultVariants: {
       variant: "default",
-      size: "lg",
+      size: "default",
     },
   },
 );
 
-const FormControl = forwardRef<
+const Checkbox = forwardRef<
   ElementRef<SupportedElements>,
-  FormControlProps<SupportedElements>
+  CheckboxProps<SupportedElements>
 >(
   (
     {
@@ -70,6 +68,7 @@ const FormControl = forwardRef<
       asChild = false,
       disabled = false,
       isLoading = false,
+      type = "checkbox",
       ...props
     },
     ref,
@@ -80,8 +79,9 @@ const FormControl = forwardRef<
       <Comp
         data-as={as || null}
         disabled={disabled || isLoading}
+        type={type}
         className={cn(
-          formControlVariants({
+          checkboxVariants({
             variant,
             size,
             loading,
@@ -98,6 +98,6 @@ const FormControl = forwardRef<
   },
 );
 
-FormControl.displayName = "FormControl";
+Checkbox.displayName = "Checkbox";
 
-export { FormControl, formControlVariants };
+export { Checkbox, checkboxVariants };

@@ -108,12 +108,12 @@ const links = [
     href: "/history",
   },
   {
-    text: "Vision",
-    href: "/vision",
+    text: "Visions",
+    href: "/visions",
   },
   {
-    text: "Leadership",
-    href: "/leadership",
+    text: "Leaderships",
+    href: "/leaderships",
   },
   {
     text: "Careers",
