@@ -34,7 +34,7 @@ const SplitSection2 = ({
     <section className={cn("py-16 md:py-24", className)}>
       <div className="container">
         <div className="grid grid-cols-1 items-center gap-8 md:gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
+          <div className="lg:order-2">
             <SectionTitle className="mb-0">
               {subtitle && <Subtitle>{subtitle}</Subtitle>}
               {title && <Title>{title}</Title>}
@@ -57,7 +57,7 @@ const SplitSection2 = ({
               </div>
             )}
           </div>
-          <div className="aspect-square w-full">
+          <div className="aspect-square w-full lg:order-1">
             <img
               className="absolute inset-0 mt-auto ml-auto size-full h-2/3 w-1/2 object-cover object-center"
               src={image1}
