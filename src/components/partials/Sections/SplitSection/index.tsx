@@ -38,7 +38,7 @@ const SplitSection = ({
               {title && <Title>{title}</Title>}
               {description && <Description>{description}</Description>}
             </SectionTitle>
-            {links?.length && (
+            {links?.length > 0 && (
               <div>
                 {links?.map((link, index) => (
                   <Link key={index} href={link?.url}>

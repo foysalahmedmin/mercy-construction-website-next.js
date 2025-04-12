@@ -1,17 +1,26 @@
-import { contents as contents_data } from "@/assets/data/contents";
+import { Content } from "@/assets/data/contents";
 import { Button } from "@/components/ui/Button";
 import { Description, SectionTitle, Title } from "@/components/ui/SectionTitle";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
+type SplitStickySectionProps = {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  image?: string;
+  contents?: Content[];
+  className?: string;
+};
+
 const SplitStickySection = ({
   title = "",
   subtitle = "",
   description = "",
-  image = "/images/partials/split-sticky.png",
-  contents = contents_data,
+  image = "",
+  contents = [],
   className = "",
-}) => {
+}: SplitStickySectionProps) => {
   return (
     <section className={cn("py-16 md:py-24", className)}>
       <div className="container">
@@ -39,7 +48,7 @@ const SplitStickySection = ({
                   {content?.links?.length && (
                     <div>
                       {content?.links?.map((link, index) => (
-                        <Link key={index} href={link?.url}>
+                        <Link key={index} href={link?.url || "#"}>
                           <Button
                             asChild={true}
                             className="foreground"

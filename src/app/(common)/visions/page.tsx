@@ -1,26 +1,21 @@
-import LeadershipsSection from "@/components/(common)/(home-page)/LeadershipsSection";
+import { construction_visions } from "@/assets/data/contents";
+import CommitmentsSection from "@/components/(common)/(visions-page)/CommitmentsSection";
+import LeadershipsSection from "@/components/(common)/(visions-page)/LeadershipsSection";
 import FollowUpSection from "@/components/partials/Sections/FollowUpSection";
 import PageHeaderSection from "@/components/partials/Sections/PageHeaderSection";
-import ProjectsSlideSection from "@/components/partials/Sections/ProjectsSlideSection";
-import SingleProjectSection from "@/components/partials/Sections/SingleProjectSection";
-import SplitSection from "@/components/partials/Sections/SplitSection";
 import SplitStickySection from "@/components/partials/Sections/SplitStickySection";
 import { SectionTitle, Subtitle, Title } from "@/components/ui/SectionTitle";
 
-const ServicesDetailsPage = async () => {
+const VisionsPage = async () => {
   return (
     <main>
       <PageHeaderSection
         subtitle="A bold direction"
         title="Vision"
         description="We believe that when caring, ambitious people come together, anything is possible. We stand up for and do what’s right. We challenge conventions to drive meaningful, positive progress for our clients, our industry, and our communities. While we have distinct and diverse skills and perspectives, we’re united in our endless quest to redefine what’s possible."
-        image="/images/partials/vision.png"
+        image="/images/(visions-page)/page-header.png"
       />
-      <SplitSection
-        title="Delivering integrated construction services to build lasting success"
-        description="When you partner with Konstruktion, you not only get innovative solutions, you get our fully vested team and a commitment to doing things right. Our relentless focus on success leads to smarter more collaborative building practices."
-      />
-      <section className="bg-muted my-16 md:my-24">
+      <section className="bg-muted py-16 md:py-24">
         <div className="container max-w-5xl">
           <SectionTitle>
             <Subtitle>Our Vision</Subtitle>
@@ -31,13 +26,21 @@ const ServicesDetailsPage = async () => {
           </SectionTitle>
         </div>
       </section>
-      <SingleProjectSection description="No matter the challenge, we build on what we know works and elevate your vision of success" />
-      <SplitStickySection />
-      <ProjectsSlideSection title="Explore Similar Projects" />
+      <SplitStickySection
+        image="/images/partials/split-sticky-1.png"
+        contents={construction_visions}
+      />
+      <CommitmentsSection />
+      <PageHeaderSection
+        subtitle="Our Core Values"
+        title="Passion. Integrity. Hard work. Professionalism. Caring."
+        description="These core values have been with us since the beginning, and they’ve infused who we are and how we build. Nothing brings us more excitement than transforming the skyline — and we do it by setting our standards high, striving for the best, building trust, and lifting up the people around us."
+        image="/images/(visions-page)/core-values.png"
+      />
       <LeadershipsSection />
       <FollowUpSection />
     </main>
   );
 };
 
-export default ServicesDetailsPage;
+export default VisionsPage;
