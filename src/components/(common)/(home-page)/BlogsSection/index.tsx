@@ -2,6 +2,7 @@ import { blogs } from "@/assets/data/blogs";
 import { Button } from "@/components/ui/Button";
 import { Description, SectionTitle, Title } from "@/components/ui/SectionTitle";
 import Link from "next/link";
+import Image from "next/image";
 
 const BlogsSection = () => {
   return (
@@ -23,7 +24,7 @@ const BlogsSection = () => {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:col-span-2">
-            {blogs?.slice(0, 2)?.map((blog, index) => (
+            {blogs?.slice(0, 2)?.map((blog) => (
               <div
                 key={blog._id}
                 className="basis-1/1 sm:basis-1/2 sm:px-4 md:basis-1/3 md:px-6"
@@ -33,11 +34,15 @@ const BlogsSection = () => {
                     href={"/blogs/" + blog?._id}
                     className="relative aspect-[4/5] w-full cursor-pointer overflow-hidden"
                   >
-                    <img
-                      className="size-full object-cover object-center transition-all duration-700 ease-in-out group-hover/card:scale-110"
-                      src={blog?.image}
-                      alt={blog?.title}
-                    />
+                    <div className="relative w-full h-full">
+                      <Image
+                        className="object-cover object-center transition-all duration-700 ease-in-out group-hover/card:scale-110"
+                        src={blog?.image}
+                        alt={blog?.title || "Blog image"}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </div>
                     {/* <div className="group/trigger absolute right-0 bottom-0 flex h-14 flex-row-reverse items-center">
                         <div className="peer hover:text-primary relative z-10 inline-flex aspect-square h-full items-center justify-center bg-white">
                           <Plus className="size-8" strokeWidth={1} />

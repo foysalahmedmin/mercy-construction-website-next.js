@@ -3,6 +3,7 @@ import FollowUpSection from "@/components/partials/Sections/FollowUpSection";
 import { Button } from "@/components/ui/Button";
 import { Description, SectionTitle, Title } from "@/components/ui/SectionTitle";
 import Link from "next/link";
+import Image from "next/image";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -11,7 +12,6 @@ const LeadershipsDetailsPage = async ({ params }: Props) => {
   const { id } = await params;
   const leader = leaderships.find((service) => service._id === id);
   const {
-    _id,
     name,
     designation,
     short_description,
@@ -26,7 +26,15 @@ const LeadershipsDetailsPage = async ({ params }: Props) => {
         <div className="container">
           <div className="grid grid-cols-1 items-center gap-8 md:gap-12 lg:grid-cols-2 lg:gap-16 xl:grid-cols-3 xl:gap-24">
             <div className="w-ful relative aspect-[5/4] lg:-mb-24">
-              <img src={image} alt={name} />
+              <div className="relative w-full h-full">
+                <Image 
+                  src={image || ""} 
+                  alt={name || "Leadership image"} 
+                  fill 
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover object-center"
+                />
+              </div>
             </div>
             <div className="space-y-8 pb-16 md:space-y-12 lg:py-12">
               <Link
@@ -80,7 +88,7 @@ const LeadershipsDetailsPage = async ({ params }: Props) => {
             {description
               ?.split("\n")
               .map((paragraph, index) =>
-                paragraph ? <p key={index}>{paragraph}</p> : <br />,
+                paragraph ? <p key={index}>{paragraph}</p> : <br key={`br-${index}`} />
               )}
           </div>
         </div>

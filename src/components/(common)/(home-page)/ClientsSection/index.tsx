@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const clients = [
   {
@@ -28,7 +29,7 @@ const ClientsSection = () => {
           <h2 className="text-3xl">Our clients</h2>
         </div>
         <div className="flex items-center justify-center border-s md:flex-1">
-          {clients?.map((client, index) => (
+          {clients?.map((client) => (
             <div
               key={client._id}
               className="basis-1/1 sm:basis-1/2 sm:px-4 md:basis-1/3 md:px-6"
@@ -38,11 +39,15 @@ const ClientsSection = () => {
                   href={"/clients/" + client?._id}
                   className="relative aspect-[2/1] w-full cursor-pointer overflow-hidden"
                 >
-                  <img
-                    src={client?.image}
-                    alt={client?.name}
-                    className="size-full object-contain object-center"
-                  />
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={client?.image}
+                      alt={client?.name || "Client logo"}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-contain object-center"
+                    />
+                  </div>
                 </Link>
               </div>
             </div>

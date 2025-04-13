@@ -3,14 +3,13 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { forwardRef, ReactNode } from "react";
+import React, { forwardRef, ReactNode } from "react";
 
-interface ActiveLinkProps {
+interface ActiveLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   children: ReactNode;
   href: string;
   className?: string;
   activeClassName?: string;
-  [key: string]: any;
 }
 
 const trimPath = (path = ""): string => {

@@ -7,6 +7,8 @@ import {
 } from "@/components/ui/SectionTitle";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Image from "next/image";
+import React from "react";
 
 type SplitSectionProps = {
   title?: string;
@@ -55,11 +57,13 @@ const SplitSection = ({
               </div>
             )}
           </div>
-          <div className="aspect-[4/5] w-full">
-            <img
-              className="size-full object-cover object-center"
+          <div className="aspect-[4/5] w-full relative">
+            <Image
+              className="object-cover object-center"
               src={image}
-              alt="hero-split-image"
+              alt="split-image"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         </div>

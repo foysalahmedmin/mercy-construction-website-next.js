@@ -2,6 +2,7 @@ import { blogs } from "@/assets/data/blogs";
 import FollowUpSection from "@/components/partials/Sections/FollowUpSection";
 import PageHeaderSection from "@/components/partials/Sections/PageHeaderSection";
 import Link from "next/link";
+import Image from "next/image";
 
 const BlogsPage = () => {
   return (
@@ -25,14 +26,16 @@ const BlogsPage = () => {
                   University Center for Computing & Data Sciences marks the
                   future of construction in higher education. The 19-story,
                   350,000-square-foot building is a testament to the
-                  university's commitment to innovation and excellence.
+                  university&apos;s commitment to innovation and excellence.
                 </p>
               </div>
-              <div className="aspect-[5/4] w-full">
-                <img
-                  className="size-full object-cover object-center"
+              <div className="aspect-[5/4] w-full relative">
+                <Image
+                  className="object-cover object-center"
                   src="/images/partials/blog-thumbnail.png"
                   alt="blog thumbnail"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </div>
@@ -42,7 +45,7 @@ const BlogsPage = () => {
       <section className="py-16 md:py-24">
         <div className="container">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 lg:col-span-3">
-            {blogs?.map((blog, index) => (
+            {blogs?.map((blog) => (
               <div
                 key={blog._id}
                 className="basis-1/1 sm:basis-1/2 sm:px-4 md:basis-1/3 md:px-6"
@@ -52,11 +55,15 @@ const BlogsPage = () => {
                     href={"/blogs/" + blog?._id}
                     className="relative aspect-[4/5] w-full cursor-pointer overflow-hidden"
                   >
-                    <img
-                      className="size-full object-cover object-center transition-all duration-700 ease-in-out group-hover/card:scale-110"
-                      src={blog?.image}
-                      alt={blog?.title}
-                    />
+                    <div className="relative w-full h-full">
+                      <Image
+                        className="object-cover object-center transition-all duration-700 ease-in-out group-hover/card:scale-110"
+                        src={blog?.image}
+                        alt={blog?.title || "Blog image"}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </div>
                     {/* <div className="group/trigger absolute right-0 bottom-0 flex h-14 flex-row-reverse items-center">
                         <div className="peer hover:text-primary relative z-10 inline-flex aspect-square h-full items-center justify-center bg-white">
                           <Plus className="size-8" strokeWidth={1} />

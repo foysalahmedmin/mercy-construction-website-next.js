@@ -3,14 +3,12 @@
 import { useEffect, useState } from "react";
 
 export const useVisibleSection = (ids?: string[], threshold = 0.5) => {
-  console.log(ids);
-  if (!ids || ids.length === 0) {
-    return { visibleSection: null };
-  }
-
   const [visibleSection, setVisibleSection] = useState<string | null>(null);
 
   useEffect(() => {
+    // Skip effect if no ids are provided
+    if (!ids || ids.length === 0) return;
+    
     const observers: IntersectionObserver[] = [];
 
     ids.forEach((sectionId) => {
@@ -33,6 +31,11 @@ export const useVisibleSection = (ids?: string[], threshold = 0.5) => {
       observers.forEach((observer) => observer.disconnect());
     };
   }, [ids, threshold]);
+
+  // Return null if no ids are provided
+  if (!ids || ids.length === 0) {
+    return { visibleSection: null };
+  }
 
   return { visibleSection };
 };

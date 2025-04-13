@@ -2,11 +2,11 @@
 
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-import type { EmblaCarouselType, EmblaOptionsType } from "embla-carousel";
+import type { EmblaCarouselType, EmblaOptionsType, EmblaPluginType } from "embla-carousel";
 import emblaCarouselAutoplay from "embla-carousel-autoplay";
 import emblaCarouselClassNames from "embla-carousel-class-names";
 import useEmblaCarousel from "embla-carousel-react";
-import {
+import React, {
   createContext,
   forwardRef,
   useCallback,
@@ -42,8 +42,8 @@ interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
   orientation?: CarouselOrientation;
   autoplay?: boolean;
   opts?: EmblaOptionsType;
-  setApi?: (api: EmblaCarouselType) => void;
-  plugins?: any[];
+  setApi?: (emblaApi: EmblaCarouselType) => void;
+  plugins?: EmblaPluginType[];
   children: ReactNode;
 }
 
@@ -51,13 +51,13 @@ interface CarouselPaginationTriggerProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isActive?: boolean;
   activeClassName?: string;
-  variant?: string;
-  size?: string;
+  variant?: "default" | "gradient" | "outline" | "ghost" | "link" | "none";
+  size?: "default" | "sm" | "md" | "lg" | "none";
 }
 
 interface TriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   shape?: "icon" | "default";
-  variant?: string;
+  variant?: "default" | "gradient" | "outline" | "ghost" | "link" | "none";
   children?: ReactNode;
 }
 

@@ -13,7 +13,7 @@ type UseIntersectionObserver = {
   options?: Options;
   isToggle?: boolean;
   isUnobservable?: boolean;
-  callback?: (isIntersecting: boolean, element: Element) => void;
+  callback?: (isVisible: boolean, targetElement: Element) => void;
 };
 
 export const useIntersectionObserver = ({
@@ -47,16 +47,19 @@ export const useIntersectionObserver = ({
       });
     }, options);
 
+    // Store a copy of the current refs for cleanup
+    const currentRefs = [...refs.current];
+
     refs.current.forEach((element) => {
       if (element) observer.observe(element);
     });
 
     return () => {
-      refs.current.forEach((element) => {
+      currentRefs.forEach((element) => {
         if (element) observer.unobserve(element);
       });
     };
-  }, [classNames, options, isToggle, callback]);
+  }, [classNames, options, isToggle, callback, isUnobservable]);
 
   const setRef =
     (index: number = 0) =>

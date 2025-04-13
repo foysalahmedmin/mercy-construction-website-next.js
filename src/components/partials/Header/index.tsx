@@ -34,7 +34,7 @@ const Header = ({ className }: { className?: string }) => {
     ["home", "services", "features", "projects"],
     0.5,
   );
-  console.log(visibleSection);
+  // Track visible section for navigation highlighting
   const pathname = usePathname();
 
   const toggleMobileMenu = () => {
@@ -46,10 +46,7 @@ const Header = ({ className }: { className?: string }) => {
     }
   };
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-    document.body.style.overflow = "auto";
-  };
+  // Mobile menu is toggled with the toggleMobileMenu function
 
   return (
     <>

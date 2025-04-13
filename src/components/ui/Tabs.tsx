@@ -16,7 +16,7 @@ import {
 // Define types for the tabs context
 type TabsContextType = {
   value: string | undefined;
-  onTabSelect: (value: string) => void;
+  onTabSelect: (tabValue: string) => void;
 };
 
 // tabs context //
@@ -34,7 +34,7 @@ export const useTabs = () => {
 
 interface TabsProps extends HTMLAttributes<HTMLDivElement> {
   value?: string;
-  setValue?: (value: string) => void;
+  setValue?: (tabValue: string) => void;
   children: ReactNode;
 }
 
@@ -45,10 +45,10 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(
   ) => {
     const [value, setValue] = useState(valueProp);
 
-    const onTabSelect = (value: string) => {
-      setValue(value);
+    const onTabSelect = (tabValue: string) => {
+      setValue(tabValue);
       if (setValueProp) {
-        setValueProp(value);
+        setValueProp(tabValue);
       }
     };
 
@@ -75,7 +75,7 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(
 Tabs.displayName = "Tabs";
 
 // tabs contents //
-interface TabsListProps extends HTMLAttributes<HTMLUListElement> {}
+type TabsListProps = HTMLAttributes<HTMLUListElement>
 
 const TabsList = forwardRef<HTMLUListElement, TabsListProps>(
   ({ className, ...props }, ref: ForwardedRef<HTMLUListElement>) => {
@@ -135,7 +135,7 @@ const TabsTrigger = forwardRef<HTMLLIElement, TabsTriggerProps>(
 );
 TabsTrigger.displayName = "TabsTrigger";
 
-interface TabsContentProps extends HTMLAttributes<HTMLDivElement> {}
+type TabsContentProps = HTMLAttributes<HTMLDivElement>
 
 const TabsContent = forwardRef<HTMLDivElement, TabsContentProps>(
   ({ className, ...props }, ref: ForwardedRef<HTMLDivElement>) => {

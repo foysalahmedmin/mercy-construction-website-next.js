@@ -3,20 +3,16 @@ import { Button } from "@/components/ui/Button";
 import { Description, SectionTitle, Title } from "@/components/ui/SectionTitle";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Image from "next/image";
+import React from "react";
 
 type SplitStickySectionProps = {
-  title?: string;
-  subtitle?: string;
-  description?: string;
   image?: string;
   contents?: Content[];
   className?: string;
 };
 
 const SplitStickySection = ({
-  title = "",
-  subtitle = "",
-  description = "",
   image = "",
   contents = [],
   className = "",
@@ -25,11 +21,13 @@ const SplitStickySection = ({
     <section className={cn("py-16 md:py-24", className)}>
       <div className="container">
         <div className="grid grid-cols-1 items-center gap-8 md:gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="sticky top-20 bottom-0 h-[calc(100vh-5rem)] w-full">
-            <img
-              className="size-full object-cover object-center"
+          <div className="sticky top-20 bottom-0 h-[calc(100vh-5rem)] w-full relative">
+            <Image
+              className="object-cover object-center"
               src={image}
               alt="split-sticky-image"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
           <div>

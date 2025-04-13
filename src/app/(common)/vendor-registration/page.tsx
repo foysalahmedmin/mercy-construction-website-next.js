@@ -5,7 +5,7 @@ import PageHeaderSection from "@/components/partials/Sections/PageHeaderSection"
 import { Button } from "@/components/ui/Button";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { FormControl } from "@/components/ui/FormControl";
-import { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 
 const whyChooseUs = [
   "We provide consistent and quality work on a regular basis.",
@@ -121,7 +121,7 @@ const VendorRegistrationPage = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError("");
     setSuccess("");
@@ -207,8 +207,9 @@ const VendorRegistrationPage = () => {
       setZelle("");
       setOthers("");
       setAgreeToTerms(false);
-    } catch (error: any) {
-      setError(error?.message || "Failed to register vendor");
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to register vendor";
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -252,7 +253,7 @@ possible."
                         type="text"
                         placeholder="Business Name"
                         value={business_name}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
                           setBusinessName(e.target.value)
                         }
                       />
@@ -264,7 +265,7 @@ possible."
                         type="text"
                         placeholder="Contact Name"
                         value={contact_name}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
                           setContactName(e.target.value)
                         }
                       />
@@ -288,7 +289,7 @@ possible."
                         type="tel"
                         placeholder="Phone Number"
                         value={contact_phone}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
                           setContactPhone(e.target.value)
                         }
                       />
@@ -300,7 +301,7 @@ possible."
                         type="email"
                         placeholder="Email Address"
                         value={contact_email}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
                           setContactEmail(e.target.value)
                         }
                       />
@@ -310,7 +311,7 @@ possible."
                       <FormControl
                         as="select"
                         value={state}
-                        onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                        onChange={(e: ChangeEvent<HTMLSelectElement>) =>
                           setState(e.target.value)
                         }
                       >
@@ -341,7 +342,7 @@ possible."
                         type="text"
                         placeholder="Mention the areas (comma separated)"
                         value={coverage_countries}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
                           setCoverageCountries(e.target.value)
                         }
                       />
@@ -353,7 +354,7 @@ possible."
                         type="text"
                         placeholder="Area of expertise (comma separated)"
                         value={area_of_expertise}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
                           setAreaOfExpertise(e.target.value)
                         }
                       />
@@ -365,7 +366,7 @@ possible."
                         type="text"
                         placeholder="List of Owned tools (comma separated)"
                         value={tools}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
                           setTools(e.target.value)
                         }
                       />
@@ -414,9 +415,7 @@ possible."
                             type="text"
                             placeholder="Other Method"
                             value={others}
-                            onChange={(
-                              e: React.ChangeEvent<HTMLInputElement>,
-                            ) => setOthers(e.target.value)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => setOthers(e.target.value)}
                           />
                         </label>
                       </div>
@@ -435,7 +434,7 @@ possible."
                           type="text"
                           placeholder="Cash App Details"
                           value={cash_app}
-                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
                             setCashApp(e.target.value)
                           }
                         />
@@ -446,7 +445,7 @@ possible."
                           type="text"
                           placeholder="Zelle Details"
                           value={zelle}
-                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
                             setZelle(e.target.value)
                           }
                         />

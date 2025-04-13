@@ -4,7 +4,7 @@ import { Checkbox } from "@/components/ui/Checkbox";
 import { FormControl } from "@/components/ui/FormControl";
 import { SectionTitle, Title } from "@/components/ui/SectionTitle";
 import Link from "next/link";
-import { useState } from "react";
+import React, { useState, FormEvent, ChangeEvent } from "react";
 
 const construction_types = [
   { value: "building", label: "Buildings" },
@@ -24,7 +24,7 @@ const ProjectApplySection = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
@@ -82,8 +82,9 @@ const ProjectApplySection = () => {
       setEmail("");
       setPhone("");
       setDescription("");
-    } catch (error: any) {
-      setError(error?.message || "Failed to create contact");
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to create contact";
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -115,7 +116,7 @@ const ProjectApplySection = () => {
                     value={item?.value}
                     name="construction-type"
                     checked={project_type === item?.value}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setProjectType(e.target.value)
                     }
                   />{" "}
@@ -133,7 +134,7 @@ const ProjectApplySection = () => {
                 placeholder="Description"
                 rows={4}
                 value={project_description}
-                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
                   setProjectDescription(e.target.value)
                 }
               />
@@ -150,7 +151,7 @@ const ProjectApplySection = () => {
                     type="text"
                     placeholder="First Name"
                     value={first_name}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setFirstName(e.target.value)
                     }
                   />
@@ -162,7 +163,7 @@ const ProjectApplySection = () => {
                     type="text"
                     placeholder="Last Name"
                     value={last_name}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setLastName(e.target.value)
                     }
                   />
@@ -174,7 +175,7 @@ const ProjectApplySection = () => {
                     type="tel"
                     placeholder="Phone Number"
                     value={phone}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setPhone(e.target.value)
                     }
                     // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
@@ -186,7 +187,7 @@ const ProjectApplySection = () => {
                     as="input"
                     type="email"
                     value={email}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setEmail(e.target.value)
                     }
                     placeholder="Email Address"
@@ -199,7 +200,7 @@ const ProjectApplySection = () => {
                     className="primary h-auto py-2"
                     placeholder="Description"
                     value={description}
-                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                    onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
                       setDescription(e.target.value)
                     }
                     rows={4}

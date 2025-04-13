@@ -9,7 +9,7 @@ import {
 import { Button } from "@/components/ui/Button";
 import { FormControl } from "@/components/ui/FormControl";
 import { Description, SectionTitle, Title } from "@/components/ui/SectionTitle";
-import { useState } from "react";
+import React, { useState, FormEvent } from "react";
 
 const FAQSection = () => {
   const [error, setError] = useState("");
@@ -21,7 +21,7 @@ const FAQSection = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     const requiredFields = [
@@ -73,8 +73,9 @@ const FAQSection = () => {
       setPhone("");
       setLookingFor("");
       setMessage("");
-    } catch (error: any) {
-      setError(error?.message || "Failed to create contact");
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to create contact";
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

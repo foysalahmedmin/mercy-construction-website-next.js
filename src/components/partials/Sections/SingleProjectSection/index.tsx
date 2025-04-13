@@ -8,6 +8,8 @@ import {
 import { cn } from "@/lib/utils";
 import { Plus } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import React from "react";
 
 type SingleProjectSectionProps = {
   title?: string;
@@ -53,11 +55,15 @@ const SingleProjectSection = ({
             href={"/projects/" + project?._id}
             className="group/trigger relative aspect-[2/1] w-full cursor-pointer overflow-hidden"
           >
-            <img
-              className="size-full object-cover object-center transition-all duration-700 ease-in-out group-hover/card:scale-110"
-              src={project?.image}
-              alt={project?.title}
-            />
+            <div className="relative w-full h-full">
+              <Image
+                className="object-cover object-center transition-all duration-700 ease-in-out group-hover/card:scale-110"
+                src={project?.image}
+                alt={project?.title || "Project image"}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
             <div className="absolute right-0 bottom-0 flex h-20 flex-row-reverse items-center">
               <div className="peer hover:text-primary relative z-10 inline-flex aspect-square h-full items-center justify-center bg-white">
                 <Plus className="size-8" strokeWidth={1} />

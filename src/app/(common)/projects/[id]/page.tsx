@@ -12,7 +12,7 @@ type Props = {
 const ProjectsDetailsPage = async ({ params }: Props) => {
   const { id } = await params;
   const project = projects.find((project) => project._id === id);
-  const { _id, title, description } = project || {};
+  const { title, description } = project || {};
 
   return (
     <main>

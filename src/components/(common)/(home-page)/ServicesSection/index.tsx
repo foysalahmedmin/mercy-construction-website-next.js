@@ -1,6 +1,7 @@
 import { services } from "@/assets/data/services";
 import { SectionTitle, Subtitle, Title } from "@/components/ui/SectionTitle";
 import Link from "next/link";
+import Image from "next/image";
 
 const ServicesSection = () => {
   return (
@@ -17,11 +18,15 @@ const ServicesSection = () => {
               href={"/services/" + service._id}
               className="group aspect-[5/4] w-full cursor-pointer overflow-hidden"
             >
-              <img
-                className="size-full object-cover object-center transition-all duration-700 ease-in-out group-hover:scale-110"
-                src={service.image}
-                alt={service.title}
-              />
+              <div className="relative w-full h-full">
+                <Image
+                  className="object-cover object-center transition-all duration-700 ease-in-out group-hover:scale-110"
+                  src={service.image}
+                  alt={service.title || "Service image"}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
             </Link>
           ))}
         </div>

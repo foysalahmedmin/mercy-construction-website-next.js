@@ -13,7 +13,7 @@ type Props = {
 const ServicesDetailsPage = async ({ params }: Props) => {
   const { id } = await params;
   const service = services.find((service) => service._id === id);
-  const { _id, title, description, image } = service || {};
+  const { title, description, image } = service || {};
 
   return (
     <main>

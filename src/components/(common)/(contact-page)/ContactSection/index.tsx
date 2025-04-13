@@ -4,7 +4,7 @@
 import { Button } from "@/components/ui/Button";
 import { FormControl } from "@/components/ui/FormControl";
 import Link from "next/link";
-import { useState } from "react";
+import React, { useState, FormEvent, ChangeEvent } from "react";
 
 const services = [
   { value: "", label: "Select" },
@@ -52,7 +52,7 @@ const ContactSection = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
@@ -110,8 +110,9 @@ const ContactSection = () => {
       setEmail("");
       setPhone("");
       setDescription("");
-    } catch (error: any) {
-      setError(error?.message || "Failed to create contact");
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to create contact";
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -161,7 +162,7 @@ const ContactSection = () => {
                     <FormControl
                       as="select"
                       value={inquiry}
-                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                      onChange={(e: ChangeEvent<HTMLSelectElement>) =>
                         setInquiry(e.target.value)
                       }
                     >
@@ -177,7 +178,7 @@ const ContactSection = () => {
                     <FormControl
                       as="select"
                       value={region}
-                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                      onChange={(e: ChangeEvent<HTMLSelectElement>) =>
                         setRegion(e.target.value)
                       }
                     >
@@ -195,7 +196,7 @@ const ContactSection = () => {
                       type="text"
                       placeholder="First Name"
                       value={firstName}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
                         setFirstName(e.target.value)
                       }
                     />
@@ -207,7 +208,7 @@ const ContactSection = () => {
                       type="text"
                       placeholder="Last Name"
                       value={lastName}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
                         setLastName(e.target.value)
                       }
                     />
@@ -220,7 +221,7 @@ const ContactSection = () => {
                       placeholder="Phone Number"
                       // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                       value={phone}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
                         setPhone(e.target.value)
                       }
                     />
@@ -232,7 +233,7 @@ const ContactSection = () => {
                       type="email"
                       placeholder="Email Address"
                       value={email}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
                         setEmail(e.target.value)
                       }
                     />
@@ -245,7 +246,7 @@ const ContactSection = () => {
                       placeholder="Description"
                       rows={4}
                       value={description}
-                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                      onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
                         setDescription(e.target.value)
                       }
                     />

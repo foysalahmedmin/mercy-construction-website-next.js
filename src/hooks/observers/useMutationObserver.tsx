@@ -13,7 +13,7 @@ type MutationObserverOptions = {
 type UseMutationObserver = {
   classNames?: string;
   options?: MutationObserverOptions;
-  callback?: (mutations: MutationRecord[], target: Element) => void;
+  callback?: (mutationList: MutationRecord[], mutationTarget: Element) => void;
 };
 
 export const useMutationObserver = ({
@@ -45,9 +45,8 @@ export const useMutationObserver = ({
     });
 
     return () => {
-      refs.current.forEach((element) => {
-        if (element) observer.disconnect();
-      });
+      // Only need to call disconnect once for MutationObserver
+      observer.disconnect();
     };
   }, [classNames, options, callback]);
 

@@ -5,6 +5,7 @@ import {
   Title,
 } from "@/components/ui/SectionTitle";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 type SplitSection1 = {
   title?: string;
@@ -37,11 +38,15 @@ const SplitSection1 = ({
         )}
         <div className="group/card grid items-center gap-6">
           <div className="group/trigger relative aspect-[2/1] w-full cursor-pointer overflow-hidden">
-            <img
-              className="size-full object-cover object-center"
-              src={image}
-              alt={title || "hero-split-image"}
-            />
+            <div className="relative w-full h-full">
+              <Image
+                className="object-cover object-center"
+                src={image}
+                alt={title || "hero-split-image"}
+                fill
+                sizes="(max-width: 768px) 100vw, 100vw"
+              />
+            </div>
           </div>
         </div>
       </div>
