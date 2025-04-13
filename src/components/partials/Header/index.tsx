@@ -171,6 +171,10 @@ const Header = ({ className }: { className?: string }) => {
                   <Link
                     key={link.name}
                     href={link.href}
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      document.body.style.overflow = "auto";
+                    }}
                     className={cn(
                       "underline-effect primary text-sm whitespace-nowrap uppercase",
                       {
@@ -184,6 +188,10 @@ const Header = ({ className }: { className?: string }) => {
                   <ActiveLink
                     key={link.name}
                     href={link.href}
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      document.body.style.overflow = "auto";
+                    }}
                     className="underline-effect primary text-sm whitespace-nowrap uppercase"
                     activeClassName="active"
                   >
@@ -193,7 +201,14 @@ const Header = ({ className }: { className?: string }) => {
               </span>
             );
           })}
-          <Link className="lg:hidden" href={"/vendor-registration"}>
+          <Link 
+            className="lg:hidden" 
+            href={"/vendor-registration"}
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              document.body.style.overflow = "auto";
+            }}
+          >
             <Button asChild={true}>
               <span>Vendor Registration</span>
             </Button>
