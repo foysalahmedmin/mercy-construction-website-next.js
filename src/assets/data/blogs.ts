@@ -4,9 +4,9 @@ export const blogs = [
     title: "The Ultimate Guide to Choosing Durable and Stylish Stucco Finishes",
     description: "",
     image:
-      "https://mercyconstructioninc.com/wp-content/uploads/2022/10/Blog-thumbnail-01.jpg",
+      "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop",
     tags: ["construction"],
-    date: "",
+    date: "April 10, 2025",
     link: "https://mercyconstructioninc.com/easy-ways-to-prevent-gutter-problems/",
   },
   {
@@ -14,19 +14,19 @@ export const blogs = [
     title: "How to Plan Your Perfect Custom Home from Scratch",
     description: "",
     image:
-      "https://mercyconstructioninc.com/wp-content/uploads/2023/10/Blog-thumbnail-02-1.jpg",
+      "https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=2070&auto=format&fit=crop",
     tags: ["construction"],
-    date: "",
+    date: "March 22, 2025",
     link: "https://mercyconstructioninc.com/10-things-to-know-before-hiring-your-contractor/",
   },
   {
     _id: "our-aproach-to-to-sustainability",
-    title: "Rifat",
+    title: "Our Approach to Sustainability in Modern Construction",
     description: "",
     image:
-      "https://mercyconstructioninc.com/wp-content/uploads/2022/10/GettyImages-1198057584-1.jpg",
+      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop",
     tags: ["awards", "innovations", "project"],
-    date: "",
+    date: "February 15, 2025",
     link: "https://mercyconstructioninc.com/our-aproach-to-to-sustainability/",
   },
   {
@@ -34,9 +34,9 @@ export const blogs = [
     title: "Corporate Social Responsibility Report 2022",
     description: "",
     image:
-      "https://mercyconstructioninc.com/wp-content/uploads/2022/11/pexels-kindel-media-9800090-1.jpg",
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop",
     tags: ["awards", "innovations", "project"],
-    date: "",
+    date: "January 28, 2025",
     link: "https://mercyconstructioninc.com/corporate-social-responsibility-report-2022/",
   },
   {
@@ -45,9 +45,9 @@ export const blogs = [
       "Solving the puzzle of sustainability in higher education construction",
     description: "",
     image:
-      "https://mercyconstructioninc.com/wp-content/uploads/2022/11/pexels-kindel-media-9800090-2-1.jpg",
+      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop",
     tags: ["awards", "innovations", "project", "sustainability"],
-    date: "",
+    date: "January 15, 2025",
     link: "https://mercyconstructioninc.com/solving-the-puzzle-of-sustainability-in-higher-education-construction-3/",
   },
   {
@@ -56,9 +56,9 @@ export const blogs = [
       "Thompson Hollywood Hotel Awarded 'Best Commercial Project' at Pacific Coast",
     description: "",
     image:
-      "https://mercyconstructioninc.com/wp-content/uploads/2022/11/pexels-matheus-viana-2414036-1.jpg",
+      "https://images.unsplash.com/photo-1545558014-8692077e9b5c?q=80&w=2070&auto=format&fit=crop",
     tags: ["awards", "innovations", "project"],
-    date: "",
+    date: "December 10, 2024",
     link: "https://mercyconstructioninc.com/thompson-hollywood-hotel-awarded-best-commercial-project-at-pacific-coast/",
   },
   {

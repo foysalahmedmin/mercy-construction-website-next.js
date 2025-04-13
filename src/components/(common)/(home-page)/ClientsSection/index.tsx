@@ -5,19 +5,18 @@ const clients = [
     _id: "5febd0aa",
     name: "",
     image:
-      "https://mercyconstructioninc.com/wp-content/uploads/2024/02/Bolla-Market-Logo.svg",
+      "https://assets1.csnews.com/images/v/16_x_9_1300/files/2020-07/bolla-market-logo_0.jpg",
   },
   {
     _id: "74b6be72",
     name: "",
-    image:
-      "https://mercyconstructioninc.com/wp-content/uploads/2024/12/Mobil-logo.png",
+    image: "https://www.logo.wine/a/logo/Mobil/Mobil-Logo.wine.svg",
   },
   {
     _id: "1be6777e",
     name: "",
     image:
-      "https://mercyconstructioninc.com/wp-content/uploads/2024/12/burger-king-logo.png",
+      "https://foodbrandlogo.com/wp-content/uploads/2024/11/Burger-King-Symbol-1024x580.webp",
   },
 ];
 

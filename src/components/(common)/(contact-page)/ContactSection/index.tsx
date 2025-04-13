@@ -1,23 +1,28 @@
+"use client";
+
+// Direct fetch implementation, no need for API import
 import { Button } from "@/components/ui/Button";
 import { FormControl } from "@/components/ui/FormControl";
 import Link from "next/link";
+import { useState } from "react";
+
 const services = [
   { value: "", label: "Select" },
-  { value: "Construction", label: "Construction" },
-  { value: "Pre-Construction Services", label: "Pre-Construction Services" },
-  { value: "Design - Build", label: "Design - Build" },
-  { value: "Lump-Sum Contracting", label: "Lump-Sum Contracting" },
+  { value: "construction", label: "Construction" },
+  { value: "pre_construction_service", label: "Pre-Construction Services" },
+  { value: "design_build", label: "Design - Build" },
+  { value: "lump_sum_contracting", label: "Lump-Sum Contracting" },
 ];
 const regions = [
   { value: "", label: "Select" },
-  { value: "Alaska", label: "Alaska" },
-  { value: "Midwest", label: "Midwest" },
-  { value: "Northwest", label: "Northwest" },
-  { value: "North Central", label: "North Central" },
-  { value: "Northeast", label: "Northeast" },
-  { value: "Pacific Islands Southwest", label: "Pacific Islands Southwest" },
-  { value: "South Central", label: "South Central" },
-  { value: "Southeast", label: "Southeast" },
+  { value: "alaska", label: "Alaska" },
+  { value: "midwest", label: "Midwest" },
+  { value: "northwest", label: "Northwest" },
+  { value: "north_central", label: "North Central" },
+  { value: "northeast", label: "Northeast" },
+  { value: "pacific_islands_southwest", label: "Pacific Islands Southwest" },
+  { value: "south_central", label: "South Central" },
+  { value: "southwest", label: "Southwest" },
 ];
 const locations = [
   {
@@ -36,6 +41,82 @@ const locations = [
   },
 ];
 const ContactSection = () => {
+  const [inquiry, setInquiry] = useState("");
+  const [region, setRegion] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const requiredFields = [
+      { field: inquiry, name: "Inquiry" },
+      { field: region, name: "Region" },
+      { field: firstName, name: "First name" },
+      { field: lastName, name: "Last name" },
+      { field: email, name: "Email" },
+      { field: phone, name: "Phone" },
+      { field: description, name: "Description" },
+    ];
+
+    const missingField = requiredFields.find((item) => !item.field);
+    if (missingField) {
+      setError(`${missingField.name} is required`);
+      return;
+    }
+
+    setError("");
+    setSuccess("");
+
+    const contactData = {
+      inquiry,
+      region,
+      first_name: firstName,
+      last_name: lastName,
+      email,
+      phone,
+      description,
+    };
+
+    try {
+      const response = await fetch(
+        "https://admin.mercyconstructioninc.com/api/contact/create_contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(contactData),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setSuccess(data?.message || "Contact created successfully");
+      setInquiry("");
+      setRegion("");
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhone("");
+      setDescription("");
+    } catch (error: any) {
+      setError(error?.message || "Failed to create contact");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="py-16">
       <div className="container">
@@ -68,11 +149,22 @@ const ContactSection = () => {
           <div className="space-y-8 md:flex-1 md:space-y-12">
             <h2 className="text-4xl">How can we help? </h2>
             <div>
-              <form action="">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSubmit(e);
+                }}
+              >
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                   <label className="w-full space-y-2">
                     <span className="block">Select Inquiry</span>
-                    <FormControl as="select">
+                    <FormControl
+                      as="select"
+                      value={inquiry}
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                        setInquiry(e.target.value)
+                      }
+                    >
                       {services?.map((service) => (
                         <option key={service.value} value={service.value}>
                           {service.label}
@@ -82,7 +174,13 @@ const ContactSection = () => {
                   </label>
                   <label className="w-full space-y-2">
                     <span className="block">Select Region </span>
-                    <FormControl as="select">
+                    <FormControl
+                      as="select"
+                      value={region}
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                        setRegion(e.target.value)
+                      }
+                    >
                       {regions?.map((region) => (
                         <option key={region.value} value={region.value}>
                           {region.label}
@@ -96,6 +194,10 @@ const ContactSection = () => {
                       as="input"
                       type="text"
                       placeholder="First Name"
+                      value={firstName}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setFirstName(e.target.value)
+                      }
                     />
                   </label>
                   <label className="w-full space-y-2">
@@ -104,6 +206,10 @@ const ContactSection = () => {
                       as="input"
                       type="text"
                       placeholder="Last Name"
+                      value={lastName}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setLastName(e.target.value)
+                      }
                     />
                   </label>
                   <label className="w-full space-y-2">
@@ -112,7 +218,11 @@ const ContactSection = () => {
                       as="input"
                       type="tel"
                       placeholder="Phone Number"
-                      pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                      // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                      value={phone}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setPhone(e.target.value)
+                      }
                     />
                   </label>
                   <label className="w-full space-y-2">
@@ -121,6 +231,10 @@ const ContactSection = () => {
                       as="input"
                       type="email"
                       placeholder="Email Address"
+                      value={email}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setEmail(e.target.value)
+                      }
                     />
                   </label>
                   <label className="w-full space-y-2 lg:col-span-2">
@@ -130,12 +244,26 @@ const ContactSection = () => {
                       className="primary h-auto py-2"
                       placeholder="Description"
                       rows={4}
+                      value={description}
+                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                        setDescription(e.target.value)
+                      }
                     />
                   </label>
+                  {error && <p className="text-red-500">{error}</p>}
+                  {success && <p className="text-green-500">{success}</p>}
                 </div>
                 <div className="mt-6 md:mt-8">
-                  <Button className="foreground" variant="outline" size="lg">
-                    <span>SEND</span>
+                  <Button
+                    type="submit"
+                    className="foreground"
+                    variant="outline"
+                    size="lg"
+                    disabled={loading}
+                  >
+                    <span className="uppercase">
+                      {loading ? "Loading..." : "Send"}
+                    </span>
                   </Button>
                 </div>
               </form>

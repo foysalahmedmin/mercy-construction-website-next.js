@@ -1,8 +1,11 @@
+"use client";
+
 import FollowUpSection from "@/components/partials/Sections/FollowUpSection";
 import PageHeaderSection from "@/components/partials/Sections/PageHeaderSection";
 import { Button } from "@/components/ui/Button";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { FormControl } from "@/components/ui/FormControl";
+import { useState } from "react";
 
 const whyChooseUs = [
   "We provide consistent and quality work on a regular basis.",
@@ -100,6 +103,116 @@ const terms = [
 ];
 
 const VendorRegistrationPage = () => {
+  const [business_name, setBusinessName] = useState("");
+  const [contact_name, setContactName] = useState("");
+  const [contact_email, setContactEmail] = useState("");
+  const [contact_phone, setContactPhone] = useState("");
+  const [contact_address, setContactAddress] = useState("");
+  const [state, setState] = useState("");
+  const [coverage_countries, setCoverageCountries] = useState("");
+  const [area_of_expertise, setAreaOfExpertise] = useState("");
+  const [tools, setTools] = useState("");
+  const [payment_method, setPaymentMethod] = useState("");
+  const [cash_app, setCashApp] = useState("");
+  const [zelle, setZelle] = useState("");
+  const [others, setOthers] = useState("");
+  const [agreeToTerms, setAgreeToTerms] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setSuccess("");
+    const requiredFields = [
+      { field: business_name, name: "Business name" },
+      { field: contact_name, name: "Contact name" },
+      { field: contact_email, name: "Contact email" },
+      { field: contact_phone, name: "Contact phone" },
+      { field: contact_address, name: "Contact address" },
+      { field: state, name: "State" },
+      { field: coverage_countries, name: "Coverage countries" },
+      { field: area_of_expertise, name: "Area of expertise" },
+      { field: tools, name: "Tools" },
+      { field: payment_method, name: "Payment method" },
+    ];
+    if (payment_method === "cash_app" && !cash_app) {
+      requiredFields.push({ field: cash_app, name: "Cash App details" });
+    } else if (payment_method === "zelle" && !zelle) {
+      requiredFields.push({ field: zelle, name: "Zelle details" });
+    } else if (payment_method === "others" && !others) {
+      requiredFields.push({ field: others, name: "Other payment details" });
+    }
+    const missingField = requiredFields.find((item) => !item.field);
+    if (missingField) {
+      setError(`${missingField.name} is required`);
+      return;
+    }
+
+    if (!agreeToTerms) {
+      setError("You must agree to the terms to continue");
+      return;
+    }
+    const vendorData = {
+      business_name,
+      contact_name,
+      contact_email,
+      contact_phone,
+      contact_address,
+      state,
+      coverage_countries: coverage_countries
+        .split(",")
+        .map((item) => item.trim()),
+      area_of_expertise: area_of_expertise
+        .split(",")
+        .map((item) => item.trim()),
+      tools: tools.split(",").map((item) => item.trim()),
+      payment_method,
+      cash_app: payment_method === "cash_app" ? cash_app : undefined,
+      zelle: payment_method === "zelle" ? zelle : undefined,
+      others: payment_method === "others" ? others : undefined,
+    };
+
+    try {
+      setLoading(true);
+      const response = await fetch(
+        "https://admin.mercyconstructioninc.com/api/vendor/create_vendor",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(vendorData),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setSuccess(data?.message || "Vendor registration successful!");
+      setBusinessName("");
+      setContactName("");
+      setContactEmail("");
+      setContactPhone("");
+      setContactAddress("");
+      setState("");
+      setCoverageCountries("");
+      setAreaOfExpertise("");
+      setTools("");
+      setPaymentMethod("");
+      setCashApp("");
+      setZelle("");
+      setOthers("");
+      setAgreeToTerms(false);
+    } catch (error: any) {
+      setError(error?.message || "Failed to register vendor");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <main>
       <PageHeaderSection
@@ -128,7 +241,7 @@ possible."
             <div className="space-y-8 md:flex-1 md:space-y-12">
               <h2 className="text-4xl">Vendor Agreement Form </h2>
               <div>
-                <form action="">
+                <form onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                     <label className="w-full space-y-2 lg:col-span-2">
                       <span className="block">
@@ -138,6 +251,10 @@ possible."
                         as="input"
                         type="text"
                         placeholder="Business Name"
+                        value={business_name}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          setBusinessName(e.target.value)
+                        }
                       />
                     </label>
                     <label className="w-full space-y-2">
@@ -145,7 +262,11 @@ possible."
                       <FormControl
                         as="input"
                         type="text"
-                        placeholder="First Name"
+                        placeholder="Contact Name"
+                        value={contact_name}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          setContactName(e.target.value)
+                        }
                       />
                     </label>
                     <label className="w-full space-y-2">
@@ -153,7 +274,11 @@ possible."
                       <FormControl
                         as="input"
                         type="text"
-                        placeholder="Last Name"
+                        placeholder="Business Address"
+                        value={contact_address}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          setContactAddress(e.target.value)
+                        }
                       />
                     </label>
                     <label className="w-full space-y-2">
@@ -162,7 +287,10 @@ possible."
                         as="input"
                         type="tel"
                         placeholder="Phone Number"
-                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                        value={contact_phone}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          setContactPhone(e.target.value)
+                        }
                       />
                     </label>
                     <label className="w-full space-y-2">
@@ -171,11 +299,22 @@ possible."
                         as="input"
                         type="email"
                         placeholder="Email Address"
+                        value={contact_email}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          setContactEmail(e.target.value)
+                        }
                       />
                     </label>
                     <label className="w-full space-y-2 lg:col-span-2">
                       <span className="block">Select State </span>
-                      <FormControl as="select">
+                      <FormControl
+                        as="select"
+                        value={state}
+                        onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                          setState(e.target.value)
+                        }
+                      >
+                        <option value="">Select State</option>
                         {states?.map((service) => (
                           <option key={service.value} value={service.value}>
                             {service.label}
@@ -189,6 +328,10 @@ possible."
                         as="input"
                         type="text"
                         placeholder="Business Address"
+                        value={contact_address}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          setContactAddress(e.target.value)
+                        }
                       />
                     </label>
                     <label className="w-full space-y-2">
@@ -196,7 +339,11 @@ possible."
                       <FormControl
                         as="input"
                         type="text"
-                        placeholder="Mention the areas you can cover without trip."
+                        placeholder="Mention the areas (comma separated)"
+                        value={coverage_countries}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          setCoverageCountries(e.target.value)
+                        }
                       />
                     </label>
                     <label className="w-full space-y-2">
@@ -204,7 +351,11 @@ possible."
                       <FormControl
                         as="input"
                         type="text"
-                        placeholder="Area of expertise"
+                        placeholder="Area of expertise (comma separated)"
+                        value={area_of_expertise}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          setAreaOfExpertise(e.target.value)
+                        }
                       />
                     </label>
                     <label className="w-full space-y-2">
@@ -212,7 +363,11 @@ possible."
                       <FormControl
                         as="input"
                         type="text"
-                        placeholder="List of Owned tools"
+                        placeholder="List of Owned tools (comma separated)"
+                        value={tools}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          setTools(e.target.value)
+                        }
                       />
                     </label>
                     <div className="group w-full space-y-2 lg:col-span-2">
@@ -223,7 +378,9 @@ possible."
                             className="accent-foreground size-[1.25rem]"
                             type="radio"
                             name="payment"
-                            value="CashApp"
+                            value="cash_app"
+                            checked={payment_method === "cash_app"}
+                            onChange={(e) => setPaymentMethod(e.target.value)}
                           />
                           <span>CashApp</span>
                         </label>
@@ -232,7 +389,9 @@ possible."
                             className="accent-foreground size-[1.25rem]"
                             type="radio"
                             name="payment"
-                            value="Zelle"
+                            value="zelle"
+                            checked={payment_method === "zelle"}
+                            onChange={(e) => setPaymentMethod(e.target.value)}
                           />
                           <span>Zelle</span>
                         </label>
@@ -241,17 +400,23 @@ possible."
                             className="accent-foreground peer/other size-[1.25rem]"
                             type="radio"
                             name="payment"
-                            value="Other"
+                            value="others"
+                            checked={payment_method === "others"}
+                            onChange={(e) => setPaymentMethod(e.target.value)}
                           />
                           <span>Other</span>
                         </label>
                       </div>
-                      <div className="hidden group-has-[input[value=Other]:checked]:block">
+                      <div className="hidden group-has-[input[value=others]:checked]:block">
                         <label className="w-full space-y-2">
                           <FormControl
                             as="input"
                             type="text"
                             placeholder="Other Method"
+                            value={others}
+                            onChange={(
+                              e: React.ChangeEvent<HTMLInputElement>,
+                            ) => setOthers(e.target.value)}
                           />
                         </label>
                       </div>
@@ -264,11 +429,28 @@ possible."
                         Please enter your Cash tag or Zelle number/email for
                         smooth payment.
                       </small>
-                      <FormControl
-                        as="input"
-                        type="text"
-                        placeholder="Details"
-                      />
+                      {payment_method === "cash_app" && (
+                        <FormControl
+                          as="input"
+                          type="text"
+                          placeholder="Cash App Details"
+                          value={cash_app}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            setCashApp(e.target.value)
+                          }
+                        />
+                      )}
+                      {payment_method === "zelle" && (
+                        <FormControl
+                          as="input"
+                          type="text"
+                          placeholder="Zelle Details"
+                          value={zelle}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            setZelle(e.target.value)
+                          }
+                        />
+                      )}
                     </label>
                     <div className="space-y-2 border p-4 lg:col-span-2">
                       <p>
@@ -290,14 +472,24 @@ possible."
                         <Checkbox
                           className="foreground rounded-none"
                           name="terms"
+                          checked={agreeToTerms}
+                          onChange={(e) => setAgreeToTerms(e.target.checked)}
                         />{" "}
                         <span className="leading-none">I agree</span>
                       </label>
                     </div>
                   </div>
+                  {error && <p className="mt-3 text-red-500">{error}</p>}
+                  {success && <p className="mt-3 text-green-500">{success}</p>}
                   <div className="mt-6 md:mt-8">
-                    <Button className="foreground" variant="outline" size="lg">
-                      <span>SUBMIT</span>
+                    <Button
+                      type="submit"
+                      className="foreground"
+                      variant="outline"
+                      size="lg"
+                      disabled={loading}
+                    >
+                      <span>{loading ? "SUBMITTING..." : "SUBMIT"}</span>
                     </Button>
                   </div>
                 </form>

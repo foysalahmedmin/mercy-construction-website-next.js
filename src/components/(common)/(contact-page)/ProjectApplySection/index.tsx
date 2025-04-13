@@ -1,23 +1,107 @@
+"use client";
 import { Button } from "@/components/ui/Button";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { FormControl } from "@/components/ui/FormControl";
 import { SectionTitle, Title } from "@/components/ui/SectionTitle";
 import Link from "next/link";
+import { useState } from "react";
 
 const construction_types = [
-  { value: "Buildings", label: "Buildings" },
-  { value: "Civil", label: "Civil" },
-  { value: "Industrial", label: "Industrial" },
+  { value: "building", label: "Buildings" },
+  { value: "civil", label: "Civil" },
+  { value: "industrial", label: "Industrial" },
 ];
 
 const ProjectApplySection = () => {
+  const [project_type, setProjectType] = useState("");
+  const [project_description, setProjectDescription] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const requiredFields = [
+      { field: project_type, name: "Project type" },
+      { field: project_description, name: "Project description" },
+      { field: first_name, name: "First name" },
+      { field: last_name, name: "Last name" },
+      { field: email, name: "Email" },
+      { field: phone, name: "Phone" },
+      { field: description, name: "Description" },
+    ];
+
+    const missingField = requiredFields.find((item) => !item.field);
+    if (missingField) {
+      setError(`${missingField.name} is required`);
+      return;
+    }
+
+    setError("");
+    setSuccess("");
+
+    const contactData = {
+      project_type,
+      project_description,
+      first_name,
+      last_name,
+      email,
+      phone,
+      description,
+    };
+
+    try {
+      const response = await fetch(
+        "https://admin.mercyconstructioninc.com/api/project/create_project",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(contactData),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setSuccess(data?.message || "Contact created successfully");
+      setProjectType("");
+      setProjectDescription("");
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhone("");
+      setDescription("");
+    } catch (error: any) {
+      setError(error?.message || "Failed to create contact");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="bg-muted py-16">
       <div className="container">
         <SectionTitle>
           <Title>Build a project with us </Title>
         </SectionTitle>
-        <form className="block space-y-16 md:max-w-1/2">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit(e);
+          }}
+          className="block space-y-16 md:max-w-1/2"
+        >
           <div className="space-y-8 md:space-y-12">
             <h2 className="text-4xl">Choose your project type</h2>
             <div className="flex flex-wrap items-center gap-4">
@@ -30,6 +114,10 @@ const ProjectApplySection = () => {
                     className="foreground rounded-none"
                     value={item?.value}
                     name="construction-type"
+                    checked={project_type === item?.value}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setProjectType(e.target.value)
+                    }
                   />{" "}
                   <span className="leading-none">{item?.label}</span>
                 </label>
@@ -44,6 +132,10 @@ const ProjectApplySection = () => {
                 className="primary bg-card h-auto py-2"
                 placeholder="Description"
                 rows={4}
+                value={project_description}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                  setProjectDescription(e.target.value)
+                }
               />
             </label>
           </div>
@@ -57,11 +149,23 @@ const ProjectApplySection = () => {
                     as="input"
                     type="text"
                     placeholder="First Name"
+                    value={first_name}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setFirstName(e.target.value)
+                    }
                   />
                 </label>
                 <label className="w-full space-y-2">
                   <span className="block">Last Name </span>
-                  <FormControl as="input" type="text" placeholder="Last Name" />
+                  <FormControl
+                    as="input"
+                    type="text"
+                    placeholder="Last Name"
+                    value={last_name}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setLastName(e.target.value)
+                    }
+                  />
                 </label>
                 <label className="w-full space-y-2">
                   <span className="block">Phone Number </span>
@@ -69,7 +173,11 @@ const ProjectApplySection = () => {
                     as="input"
                     type="tel"
                     placeholder="Phone Number"
-                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    value={phone}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setPhone(e.target.value)
+                    }
+                    // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                   />
                 </label>
                 <label className="w-full space-y-2">
@@ -77,6 +185,10 @@ const ProjectApplySection = () => {
                   <FormControl
                     as="input"
                     type="email"
+                    value={email}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setEmail(e.target.value)
+                    }
                     placeholder="Email Address"
                   />
                 </label>
@@ -86,6 +198,10 @@ const ProjectApplySection = () => {
                     as="textarea"
                     className="primary h-auto py-2"
                     placeholder="Description"
+                    value={description}
+                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                      setDescription(e.target.value)
+                    }
                     rows={4}
                   />
                 </label>
@@ -109,9 +225,18 @@ const ProjectApplySection = () => {
                   Privacy Policy.
                 </Link>
               </small>
+              {error && <p className="mt-3 text-red-500">{error}</p>}
+              {success && <p className="mt-3 text-green-500">{success}</p>}
               <div className="mt-6 md:mt-8">
-                <Button className="foreground" variant="outline" size="lg">
-                  <span>SEND</span>
+                <Button
+                  disabled={loading}
+                  className="foreground"
+                  variant="outline"
+                  size="lg"
+                >
+                  <span className="uppercase">
+                    {loading ? "Loading..." : "Send"}
+                  </span>
                 </Button>
               </div>
             </div>

@@ -117,9 +117,14 @@ const Header = ({ className }: { className?: string }) => {
             })}
           </nav>
           <div className="flex items-center gap-4">
-            <Link href={"#"}>
+            <Link href={"/contact"}>
               <Button asChild={true}>
                 <span>GET AN ESTIMATE</span>
+              </Button>
+            </Link>
+            <Link className="hidden lg:block" href={"/vendor-registration"}>
+              <Button asChild={true}>
+                <span>Vendor Registration</span>
               </Button>
             </Link>
             {/* Mobile Menu Button */}
@@ -191,6 +196,11 @@ const Header = ({ className }: { className?: string }) => {
               </span>
             );
           })}
+          <Link className="lg:hidden" href={"/vendor-registration"}>
+            <Button asChild={true}>
+              <span>Vendor Registration</span>
+            </Button>
+          </Link>
         </nav>
       </div>
     </>
