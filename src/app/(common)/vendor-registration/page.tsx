@@ -5,7 +5,7 @@ import PageHeaderSection from "@/components/partials/Sections/PageHeaderSection"
 import { Button } from "@/components/ui/Button";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { FormControl } from "@/components/ui/FormControl";
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 
 const whyChooseUs = [
   "We provide consistent and quality work on a regular basis.",
@@ -208,7 +208,8 @@ const VendorRegistrationPage = () => {
       setOthers("");
       setAgreeToTerms(false);
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to register vendor";
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to register vendor";
       setError(errorMessage);
     } finally {
       setLoading(false);
@@ -259,7 +260,7 @@ possible."
                       />
                     </label>
                     <label className="w-full space-y-2">
-                      <span className="block">First Name </span>
+                      <span className="block">Contact Name</span>
                       <FormControl
                         as="input"
                         type="text"
@@ -267,18 +268,6 @@ possible."
                         value={contact_name}
                         onChange={(e: ChangeEvent<HTMLInputElement>) =>
                           setContactName(e.target.value)
-                        }
-                      />
-                    </label>
-                    <label className="w-full space-y-2">
-                      <span className="block">Last Name </span>
-                      <FormControl
-                        as="input"
-                        type="text"
-                        placeholder="Business Address"
-                        value={contact_address}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                          setContactAddress(e.target.value)
                         }
                       />
                     </label>
@@ -306,7 +295,7 @@ possible."
                         }
                       />
                     </label>
-                    <label className="w-full space-y-2 lg:col-span-2">
+                    <label className="w-full space-y-2">
                       <span className="block">Select State </span>
                       <FormControl
                         as="select"
@@ -415,7 +404,9 @@ possible."
                             type="text"
                             placeholder="Other Method"
                             value={others}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => setOthers(e.target.value)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                              setOthers(e.target.value)
+                            }
                           />
                         </label>
                       </div>
