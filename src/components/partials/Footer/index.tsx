@@ -17,8 +17,8 @@ const data = [
       },
       {
         type: "link",
-        text: "mercyconstructionnyc@gmail.com",
-        href: "mailto:mercyconstructionnyc@gmail.com",
+        text: "partners@mercyconstructioninc.com",
+        href: "mailto:partners@mercyconstructioninc.com",
       },
     ],
   },
