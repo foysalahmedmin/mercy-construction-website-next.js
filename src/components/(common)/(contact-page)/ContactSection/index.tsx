@@ -4,7 +4,7 @@
 import { Button } from "@/components/ui/Button";
 import { FormControl } from "@/components/ui/FormControl";
 import Link from "next/link";
-import React, { useState, FormEvent, ChangeEvent } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 const services = [
   { value: "", label: "Select" },
@@ -31,8 +31,8 @@ const locations = [
   },
   {
     type: "link",
-    text: "+1 (646) 392-5450",
-    href: "tel:+16463925450",
+    text: "+1 (934) 300-5070",
+    href: "tel:+19343005070",
   },
   {
     type: "link",
@@ -111,7 +111,8 @@ const ContactSection = () => {
       setPhone("");
       setDescription("");
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to create contact";
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to create contact";
       setError(errorMessage);
     } finally {
       setLoading(false);

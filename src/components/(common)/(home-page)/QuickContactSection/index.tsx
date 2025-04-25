@@ -11,7 +11,7 @@ const QuickContactSection = () => {
           <Phone className="text-primary my-1 size-6" />
           <div>
             <strong className="block text-xl font-normal">
-              (646) 392-5450
+              (934) 300-5070
             </strong>
             <p>Call us now for more details</p>
           </div>
