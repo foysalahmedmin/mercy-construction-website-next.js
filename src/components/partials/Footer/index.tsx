@@ -35,21 +35,21 @@ const data = [
         text: "Interior Painting Services",
         href: "/services/interior-painting-services",
       },
-      {
-        type: "link",
-        text: "Kitchen Remodeling",
-        href: "/services/kitchen-remodeling",
-      },
-      {
-        type: "link",
-        text: "Bathroom Remodeling",
-        href: "/services/bathroom-remodeling",
-      },
-      {
-        type: "link",
-        text: "Roofing",
-        href: "/services/roofing",
-      },
+      // {
+      //   type: "link",
+      //   text: "Kitchen Remodeling",
+      //   href: "/services/kitchen-remodeling",
+      // },
+      // {
+      //   type: "link",
+      //   text: "Bathroom Remodeling",
+      //   href: "/services/bathroom-remodeling",
+      // },
+      // {
+      //   type: "link",
+      //   text: "Roofing",
+      //   href: "/services/roofing",
+      // },
       {
         type: "link",
         text: "Apartment Renovation",
