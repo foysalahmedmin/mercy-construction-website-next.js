@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="128" cy="128" r="120" fill="#EBF4FF" />
+  
+  <!-- Toolbox -->
+  <rect x="78" y="146" width="100" height="70" rx="8" fill="#2563EB" />
+  <rect x="78" y="146" width="100" height="20" rx="4" fill="#1E40AF" />
+  <rect x="118" y="136" width="20" height="20" rx="4" fill="#1E40AF" />
+  
+  <!-- Tools -->
+  <!-- Wrench -->
+  <path d="M95 120C95 120 105 110 115 120C125 130 115 140 115 140L105 130L95 120Z" fill="#9CA3AF" stroke="#4B5563" stroke-width="2" />
+  
+  <!-- Screwdriver -->
+  <rect x="135" y="100" width="6" height="40" rx="2" transform="rotate(30 135 100)" fill="#9CA3AF" stroke="#4B5563" stroke-width="1" />
+  <path d="M150 90L155 95L145 105L140 100L150 90Z" fill="#F59E0B" stroke="#D97706" stroke-width="1" />
+  
+  <!-- Gears -->
+  <circle cx="80" cy="90" r="15" fill="#9CA3AF" stroke="#4B5563" stroke-width="2" />
+  <circle cx="80" cy="90" r="5" fill="#4B5563" />
+  <path d="M80 70V75" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  <path d="M80 105V110" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  <path d="M60 90H65" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  <path d="M95 90H100" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  <path d="M67 77L71 81" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  <path d="M89 99L93 103" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  <path d="M67 103L71 99" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  <path d="M89 81L93 77" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  
+  <circle cx="170" cy="100" r="12" fill="#9CA3AF" stroke="#4B5563" stroke-width="2" />
+  <circle cx="170" cy="100" r="4" fill="#4B5563" />
+  <path d="M170 84V88" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  <path d="M170 112V116" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  <path d="M154 100H158" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  <path d="M182 100H186" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  <path d="M159 89L162 92" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  <path d="M178 108L181 111" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  <path d="M159 111L162 108" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  <path d="M178 92L181 89" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
+  
+  <!-- Hard hat -->
+  <path d="M128 60C108 60 98 75 98 90H158C158 75 148 60 128 60Z" fill="#F59E0B" stroke="#D97706" stroke-width="2" />
+  <path d="M98 90C98 90 113 100 128 100C143 100 158 90 158 90H98Z" fill="#F59E0B" stroke="#D97706" stroke-width="2" />
+  
+  <!-- Text "Under Construction" -->
+  <text x="128" y="190" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">UNDER MAINTENANCE</text>
+</svg>

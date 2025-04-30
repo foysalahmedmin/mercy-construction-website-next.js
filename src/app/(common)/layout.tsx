@@ -1,7 +1,6 @@
-import Footer from "@/components/partials/Footer";
-import Header from "@/components/partials/Header";
 import type { Metadata } from "next";
 import React from "react";
+import MaintainancePage from "./maintainance/page";
 
 export const metadata: Metadata = {
   title: "Mercy Construction",
@@ -15,9 +14,10 @@ export default function CommonLayout({
 }>) {
   return (
     <>
-      <Header />
+      <MaintainancePage />
+      {/* <Header />
       {children}
-      <Footer />
+      <Footer /> */}
     </>
   );
 }
