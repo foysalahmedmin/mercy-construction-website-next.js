@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import React from "react";
-import MaintainancePage from "./maintainance/page";
+import ClientLayout from "./client-layout";
 
 export const metadata: Metadata = {
   title: "Mercy Construction",
@@ -9,18 +9,13 @@ export const metadata: Metadata = {
 
 export default function CommonLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  // This is a server component, we'll use a client component for path-based logic
   return (
-    <>
-      <MaintainancePage />
-      {/*
-      The following code is commented out during maintenance mode
-      <Header />
+    <ClientLayout>
       {children}
-      <Footer />
-      */}
-    </>
+    </ClientLayout>
   );
 }
