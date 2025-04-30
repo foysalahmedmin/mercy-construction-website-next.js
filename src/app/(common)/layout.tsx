@@ -15,9 +15,12 @@ export default function CommonLayout({
   return (
     <>
       <MaintainancePage />
-      {/* <Header />
+      {/* 
+      The following code is commented out during maintenance mode
+      <Header />
       {children}
-      <Footer /> */}
+      <Footer /> 
+      */}
     </>
   );
 }
