@@ -6,9 +6,8 @@ import {
   Title,
 } from "@/components/ui/SectionTitle";
 import { cn } from "@/lib/utils";
-import { Plus } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 type SingleProjectSectionProps = {
@@ -52,10 +51,11 @@ const SingleProjectSection = ({
         )}
         <div className="group/card grid items-center gap-6">
           <Link
-            href={"/projects/" + project?._id}
+            // href={"/projects/" + project?._id}
+            href="#"
             className="group/trigger relative aspect-[2/1] w-full cursor-pointer overflow-hidden"
           >
-            <div className="relative w-full h-full">
+            <div className="relative h-full w-full">
               <Image
                 className="object-cover object-center transition-all duration-700 ease-in-out group-hover/card:scale-110"
                 src={project?.image}
@@ -64,7 +64,7 @@ const SingleProjectSection = ({
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
-            <div className="absolute right-0 bottom-0 flex h-20 flex-row-reverse items-center">
+            {/* <div className="absolute right-0 bottom-0 flex h-20 flex-row-reverse items-center">
               <div className="peer hover:text-primary relative z-10 inline-flex aspect-square h-full items-center justify-center bg-white">
                 <Plus className="size-8" strokeWidth={1} />
               </div>
@@ -85,7 +85,7 @@ const SingleProjectSection = ({
                   </h3>
                 </div>
               </div>
-            </div>
+            </div> */}
           </Link>
         </div>
       </div>
