@@ -139,7 +139,7 @@ const FAQSection = () => {
                   />
                 </label>
                 <label className="block w-full space-y-2">
-                  <span className="inline-block">Phone number 2334</span>
+                  <span className="inline-block">Phone number</span>
                   <FormControl
                     value={phone}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
