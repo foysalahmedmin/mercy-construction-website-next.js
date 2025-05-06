@@ -5,6 +5,9 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  images: {
+    domains: ["images.unsplash.com", "assets1.csnews.com", "foodbrandlogo.com"],
+  },
 }
 
 module.exports = nextConfig
