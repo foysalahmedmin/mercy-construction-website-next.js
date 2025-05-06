@@ -90,19 +90,19 @@ const data = [
         text: "Leadership",
         href: "/leadership",
       },
-      {
-        type: "link",
-        text: "Projects",
-        href: "/projects",
-      },
+      // {
+      //   type: "link",
+      //   text: "Projects",
+      //   href: "/projects",
+      // },
     ],
   },
 ];
 const links = [
-  {
-    text: "Projects",
-    href: "/projects",
-  },
+  // {
+  //   text: "Projects",
+  //   href: "/projects",
+  // },
   {
     text: "History",
     href: "/history",

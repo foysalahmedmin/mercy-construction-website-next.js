@@ -17,14 +17,14 @@ const navLinks = [
     name: "Services",
   },
   { href: "/#features", name: "Features" },
-  {
-    href: "/#projects",
-    name: "Projects",
-  },
-  {
-    href: "/blogs",
-    name: "Blogs",
-  },
+  // {
+  //   href: "/#projects",
+  //   name: "Projects",
+  // },
+  // {
+  //   href: "/blogs",
+  //   name: "Blogs",
+  // },
 ];
 
 const Header = ({ className }: { className?: string }) => {
@@ -119,11 +119,11 @@ const Header = ({ className }: { className?: string }) => {
                 <span>GET AN ESTIMATE</span>
               </Button>
             </Link>
-            <Link className="hidden lg:block" href={"/vendor-registration"}>
+            {/* <Link className="hidden lg:block" href={"/vendor-registration"}>
               <Button asChild={true}>
                 <span>Vendor Registration</span>
               </Button>
-            </Link>
+            </Link> */}
             {/* Mobile Menu Button */}
             <button
               className="flex flex-col space-y-1.5 focus:outline-none lg:hidden"
@@ -201,8 +201,8 @@ const Header = ({ className }: { className?: string }) => {
               </span>
             );
           })}
-          <Link 
-            className="lg:hidden" 
+          {/* <Link
+            className="lg:hidden"
             href={"/vendor-registration"}
             onClick={() => {
               setIsMobileMenuOpen(false);
@@ -212,7 +212,7 @@ const Header = ({ className }: { className?: string }) => {
             <Button asChild={true}>
               <span>Vendor Registration</span>
             </Button>
-          </Link>
+          </Link> */}
         </nav>
       </div>
     </>
