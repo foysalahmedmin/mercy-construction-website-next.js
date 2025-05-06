@@ -2,7 +2,6 @@ import { contents_services_details } from "@/assets/data/contents";
 import { services } from "@/assets/data/services";
 import FollowUpSection from "@/components/partials/Sections/FollowUpSection";
 import PageHeaderSection from "@/components/partials/Sections/PageHeaderSection";
-import ProjectsSlideSection from "@/components/partials/Sections/ProjectsSlideSection";
 import SingleProjectSection from "@/components/partials/Sections/SingleProjectSection";
 import SplitSection from "@/components/partials/Sections/SplitSection";
 import SplitStickySection from "@/components/partials/Sections/SplitStickySection";
@@ -32,7 +31,7 @@ const ServicesDetailsPage = async ({ params }: Props) => {
         image="/images/partials/split-sticky.png"
         contents={contents_services_details}
       />
-      <ProjectsSlideSection title="Explore Similar Projects" />
+      {/* <ProjectsSlideSection title="Explore Similar Projects" /> */}
       <FollowUpSection />
     </main>
   );

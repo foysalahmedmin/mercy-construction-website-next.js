@@ -1,5 +1,4 @@
 import { Description, Subtitle, Title } from "@/components/ui/SectionTitle";
-import { cn } from "@/lib/utils";
 type PageHeaderSectionProps = {
   title?: string;
   subtitle?: string;
@@ -35,7 +34,7 @@ const PageHeaderSection = ({
           className="h-[60vh] bg-cover bg-center bg-no-repeat"
         />
       )}
-      {Metrics?.length > 0 && (
+      {/* {Metrics?.length > 0 && (
         <div className="container lg:py-16">
           <div className="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-3">
             {Metrics?.map((metric, index) => {
@@ -67,7 +66,7 @@ const PageHeaderSection = ({
             })}
           </div>
         </div>
-      )}
+      )} */}
     </section>
   );
 };

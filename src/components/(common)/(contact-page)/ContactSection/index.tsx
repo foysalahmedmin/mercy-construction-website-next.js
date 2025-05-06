@@ -31,7 +31,7 @@ const locations = [
   },
   {
     type: "link",
-    text: "+1 (934) 300-5070",
+    text: "+1 (934) 392-5450",
     href: "tel:+19343005070",
   },
   {

@@ -13,13 +13,13 @@ export const faqs = [
       "Our free remodeling estimates include a detailed written scope of work. At times, when necessary or when requested, we will provide renderings for you to view what your remodel will look like upon completion. Renderings look like a picture of your home and are a likeness of what your remodel will look like so you can visualize the space to be remodeled.",
     tab: 2,
   },
-  {
-    _id: "3",
-    question: "Why do roofing estimates vary so widely?",
-    answer:
-      "Roofing costs are heavily weighted to labor and insurance. Generally insurance is the difference. Contractors who don't have insurance or who have restricted insurance will be less expensive. (For you, this savings may be no savings at all if something goes wrong.)",
-    tab: 3,
-  },
+  // {
+  //   _id: "3",
+  //   question: "Why do roofing estimates vary so widely?",
+  //   answer:
+  //     "Roofing costs are heavily weighted to labor and insurance. Generally insurance is the difference. Contractors who don't have insurance or who have restricted insurance will be less expensive. (For you, this savings may be no savings at all if something goes wrong.)",
+  //   tab: 3,
+  // },
   {
     _id: "4",
     question: "How long will my project take?",

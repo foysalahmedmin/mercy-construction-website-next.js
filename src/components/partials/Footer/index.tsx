@@ -12,7 +12,7 @@ const data = [
       },
       {
         type: "link",
-        text: "(934) 300-5070",
+        text: "+1 (934) 392-5450",
         href: "tel:+19343005070",
       },
       {
@@ -55,48 +55,48 @@ const data = [
         text: "Apartment Renovation",
         href: "/services/apartment-renovation",
       },
-      {
-        type: "link",
-        text: "Hardwood floor",
-        href: "/services/hardwood-floor",
-      },
-    ],
-  },
-  {
-    title: "About",
-    items: [
-      {
-        type: "link",
-        text: "History",
-        href: "/history",
-      },
-      {
-        type: "link",
-        text: "Vision",
-        href: "/vision",
-      },
-      {
-        type: "link",
-        text: "Safety",
-        href: "/safety",
-      },
-      {
-        type: "link",
-        text: "Careers",
-        href: "/careers",
-      },
-      {
-        type: "link",
-        text: "Leadership",
-        href: "/leadership",
-      },
       // {
       //   type: "link",
-      //   text: "Projects",
-      //   href: "/projects",
+      //   text: "Hardwood floor",
+      //   href: "/services/hardwood-floor",
       // },
     ],
   },
+  // {
+  //   title: "About",
+  //   items: [
+  //     {
+  //       type: "link",
+  //       text: "History",
+  //       href: "/history",
+  //     },
+  //     {
+  //       type: "link",
+  //       text: "Vision",
+  //       href: "/vision",
+  //     },
+  //     {
+  //       type: "link",
+  //       text: "Safety",
+  //       href: "/safety",
+  //     },
+  //     {
+  //       type: "link",
+  //       text: "Careers",
+  //       href: "/careers",
+  //     },
+  //     {
+  //       type: "link",
+  //       text: "Leadership",
+  //       href: "/leadership",
+  //     },
+  //     {
+  //       type: "link",
+  //       text: "Projects",
+  //       href: "/projects",
+  //     },
+  //   ],
+  // },
 ];
 const links = [
   // {
@@ -142,8 +142,8 @@ const Footer = () => {
   return (
     <footer className="py-16 md:py-24">
       <div className="container space-y-16 md:space-y-24">
-        <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-3 xl:grid-cols-5">
-          <div className="space-y-4 lg:col-span-3 xl:col-span-2 xl:space-y-12">
+        <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="space-y-4 lg:col-span-2 xl:col-span-2 xl:space-y-12">
             <Link
               href=""
               className="font-display block w-full text-xl font-medium tracking-tight transition-opacity duration-300 hover:opacity-80"
@@ -160,7 +160,7 @@ const Footer = () => {
             <div className="flex flex-wrap gap-4">
               <Link target="_blank" href="tel:+19343005070">
                 <Button className="foreground" size="lg">
-                  <span>(934) 300-5070</span>
+                  <span>+1 (934) 392-5450</span>
                 </Button>
               </Link>
               <Link href="/contact">
@@ -194,7 +194,7 @@ const Footer = () => {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-3 xl:grid-cols-5">
+        {/* <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-3 xl:grid-cols-5">
           {links.map((link, index) => (
             <Link className="w-full" key={index} href={link?.href}>
               <Button
@@ -205,18 +205,18 @@ const Footer = () => {
               </Button>
             </Link>
           ))}
-        </div>
+        </div> */}
         <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-3">
           <div className="flex items-center gap-4">
             ©2025
             <Link
               className="primary underline-effect hover:text-primary"
-              href="https://mercyconstructionnyc.com"
+              href="https://mercyconstructioninc.com"
             >
               Mercy Construction Inc.
             </Link>
           </div>
-          <div className="flex flex-wrap items-center gap-4 lg:justify-center">
+          {/* <div className="flex flex-wrap items-center gap-4 lg:justify-center">
             {socials?.map((social, index) => (
               <Link
                 className="primary underline-effect hover:text-primary"
@@ -227,7 +227,7 @@ const Footer = () => {
                 {social?.text}
               </Link>
             ))}
-          </div>
+          </div> */}
           <div className="flex flex-wrap items-center gap-4 lg:justify-center">
             <Link
               className="primary underline-effect hover:text-primary"

@@ -9,7 +9,7 @@ import {
 import { Button } from "@/components/ui/Button";
 import { FormControl } from "@/components/ui/FormControl";
 import { Description, SectionTitle, Title } from "@/components/ui/SectionTitle";
-import React, { useState, FormEvent } from "react";
+import React, { FormEvent, useState } from "react";
 
 const FAQSection = () => {
   const [error, setError] = useState("");
@@ -74,7 +74,8 @@ const FAQSection = () => {
       setLookingFor("");
       setMessage("");
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to create contact";
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to create contact";
       setError(errorMessage);
     } finally {
       setLoading(false);
@@ -176,7 +177,7 @@ const FAQSection = () => {
                     <option value="apartment_renovation">
                       Apartment Renovation
                     </option>
-                    <option value="roofing">Roofing</option>
+                    {/* <option value="roofing">Roofing</option> */}
                   </FormControl>
                 </label>
                 <label className="block w-full space-y-2">

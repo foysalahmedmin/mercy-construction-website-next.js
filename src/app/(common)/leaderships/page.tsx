@@ -1,7 +1,6 @@
 import FollowUpSection from "@/components/partials/Sections/FollowUpSection";
 import LeadershipsSlideSection from "@/components/partials/Sections/LeadershipsSlideSection";
 import PageHeaderSection from "@/components/partials/Sections/PageHeaderSection";
-import SplitSection from "@/components/partials/Sections/SplitSection";
 
 const metrics = [
   {
@@ -27,7 +26,7 @@ const LeadershipsPage = () => {
         description="Mercy’s leaders come from all walks of life and business. What they share: a persistent drive to explore and change the way the world builds. Meet the people who lead our quest for better."
         metrics={metrics}
       />
-      <SplitSection
+      {/* <SplitSection
         className="bg-muted"
         title="Abul Kalam"
         description={
@@ -51,7 +50,7 @@ const LeadershipsPage = () => {
             url: "/leaderships/abul-kalam",
           },
         ]}
-      />
+      /> */}
       <LeadershipsSlideSection title="Our leaderships" />
       <FollowUpSection />
     </main>
