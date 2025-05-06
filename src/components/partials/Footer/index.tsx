@@ -12,8 +12,8 @@ const data = [
       },
       {
         type: "link",
-        text: "+1 (934) 392-5450",
-        href: "tel:+19343005070",
+        text: "+1 (646) 392-5450",
+        href: "tel:+16463925450",
       },
       {
         type: "link",
@@ -158,9 +158,9 @@ const Footer = () => {
               />
             </Link>
             <div className="flex flex-wrap gap-4">
-              <Link target="_blank" href="tel:+19343005070">
+              <Link target="_blank" href="tel:+16463925450">
                 <Button className="foreground" size="lg">
-                  <span>+1 (934) 392-5450</span>
+                  <span>+1 (646) 392-5450</span>
                 </Button>
               </Link>
               <Link href="/contact">
