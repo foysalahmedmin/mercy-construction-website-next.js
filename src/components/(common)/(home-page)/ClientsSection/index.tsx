@@ -1,12 +1,12 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 const clients = [
   {
     _id: "5febd0aa",
     name: "",
     image:
-      "https://assets1.csnews.com/images/v/16_x_9_1300/files/2020-07/bolla-market-logo_0.jpg",
+      "/client_1.jpg",
   },
   {
     _id: "74b6be72",
