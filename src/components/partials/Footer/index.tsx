@@ -8,7 +8,7 @@ const data = [
     items: [
       {
         type: "text",
-        text: "95-28 147th Place, Queens, NY 11435, United States",
+        text: "202 Gibson Boulevard, Valley Stream, NY 11581",
       },
       {
         type: "link",
