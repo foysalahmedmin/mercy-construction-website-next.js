@@ -25,41 +25,41 @@ const data = [
   {
     title: "Services",
     items: [
-      {
-        type: "link",
-        text: "Home Renovation",
-        href: "/services/home-renovation",
-      },
+      // {
+      //   type: "link",
+      //   text: "Home Renovation",
+      //   href: "/services/home-renovation",
+      // },
       {
         type: "link",
         text: "Interior Painting Services",
         href: "/services/interior-painting-services",
       },
-      {
-        type: "link",
-        text: "Kitchen Remodeling",
-        href: "/services/kitchen-remodeling",
-      },
-      {
-        type: "link",
-        text: "Bathroom Remodeling",
-        href: "/services/bathroom-remodeling",
-      },
-      {
-        type: "link",
-        text: "Roofing",
-        href: "/services/roofing",
-      },
-      {
-        type: "link",
-        text: "Apartment Renovation",
-        href: "/services/apartment-renovation",
-      },
-      {
-        type: "link",
-        text: "Hardwood floor",
-        href: "/services/hardwood-floor",
-      },
+      // {
+      //   type: "link",
+      //   text: "Kitchen Remodeling",
+      //   href: "/services/kitchen-remodeling",
+      // },
+      // {
+      //   type: "link",
+      //   text: "Bathroom Remodeling",
+      //   href: "/services/bathroom-remodeling",
+      // },
+      // {
+      //   type: "link",
+      //   text: "Roofing",
+      //   href: "/services/roofing",
+      // },
+      // {
+      //   type: "link",
+      //   text: "Apartment Renovation",
+      //   href: "/services/apartment-renovation",
+      // },
+      // {
+      //   type: "link",
+      //   text: "Hardwood floor",
+      //   href: "/services/hardwood-floor",
+      // },
     ],
   },
   {
