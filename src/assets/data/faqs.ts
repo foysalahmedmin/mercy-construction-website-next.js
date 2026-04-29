@@ -1,30 +1,30 @@
 export const faqs = [
   {
     _id: "1",
-    question: "How much does a home remodeling cost?",
+    question: "What happens during a free consultation?",
     answer:
-      "Projects vary widely depending on your needs and budget. Our representatives visit with you to better understand your home remodeling needs. At Konstruktion Home Improvements we do more than give you a quote. We provide you with the information you need to make the right decisions for your home.\n\nOur representatives take time to explain the details regarding your project. We answer all of your questions and explain our estimates for your home improvement project.\n\nThere is no obligation. Give us some time to review your wish list and we will give you valuable information. We believe that an educated consumer is our best customer!",
+      "During your free consultation, one of our experienced project managers will visit your property to discuss your vision, assess the scope of work, and answer any questions you may have. We'll walk through your space together, take measurements if needed, and provide expert recommendations tailored to your goals and budget. There is absolutely no obligation — our goal is to give you the information you need to make confident decisions about your project.",
     tab: 1,
   },
   {
     _id: "2",
-    question: "What is included with a free remodeling estimate?",
+    question: "How do I schedule a free consultation?",
     answer:
-      "Our free remodeling estimates include a detailed written scope of work. At times, when necessary or when requested, we will provide renderings for you to view what your remodel will look like upon completion. Renderings look like a picture of your home and are a likeness of what your remodel will look like so you can visualize the space to be remodeled.",
+      "Scheduling is easy! Simply fill out the consultation form on this page with your name, contact details, and a brief description of your project. Our team will reach out within 24 hours to confirm a date and time that works best for you. You can also call us directly if you prefer to speak with someone right away.",
     tab: 2,
   },
   {
     _id: "3",
-    question: "Why do roofing estimates vary so widely?",
+    question: "How should I prepare for the consultation?",
     answer:
-      "Roofing costs are heavily weighted to labor and insurance. Generally insurance is the difference. Contractors who don't have insurance or who have restricted insurance will be less expensive. (For you, this savings may be no savings at all if something goes wrong.)",
+      "To make the most of your consultation, it helps to have a general idea of what you'd like to accomplish — whether it's a kitchen remodel, bathroom renovation, roofing repair, or a full home renovation. If you have any inspiration photos, sketches, or a rough budget in mind, feel free to share them with us. Don't worry if you're unsure about the details — that's exactly what we're here to help with.",
     tab: 3,
   },
   {
     _id: "4",
-    question: "How long will my project take?",
+    question: "Is the consultation really free with no obligation?",
     answer:
-      "During our free consultation with you, we will discuss the duration of your project. The key element in completing your project in a timely manner is for you to be available during the process so you can select your products. In addition, we will need full access to your home during the remodel during regular work hours (Monday through Friday 8am – 5pm). We will not begin work on your home until all the materials have been received. Our company policy is to stay on your project until completion once we have started construction.",
+      "Yes, absolutely. Our consultations are 100% free with no strings attached. We believe that building trust starts with providing value upfront. After the consultation, you'll receive a detailed written estimate and scope of work. Whether you decide to move forward with us or not, you'll walk away with valuable insights about your project.",
     tab: 4,
   },
 ];
